@@ -1,1839 +1,809 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Projects | Harsh Mahendra Mishra</title>
-
-    <meta name="description"
-          content="Projects by Harsh Mahendra Mishra - Java, Web Development, Cybersecurity, Python and AI projects.">
-
-    <style>
-
-        /* =========================
-           RESET
-        ========================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #08080d;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-
-        /* =========================
-           VARIABLES
-        ========================= */
-
-        :root {
-
-            --bg: #08080d;
-
-            --card: #101018;
-
-            --card-hover: #141420;
-
-            --purple: #8b5cf6;
-
-            --purple-light: #a78bfa;
-
-            --cyan: #22d3ee;
-
-            --white: #ffffff;
-
-            --muted: #a1a1aa;
-
-            --border:
-                rgba(255,255,255,0.09);
-
-            --max-width: 1180px;
-        }
-
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-
-            width: 100%;
-
-            background:
-                rgba(8,8,13,0.94);
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-        .navbar {
-
-            width: 90%;
-
-            max-width: var(--max-width);
-
-            margin: auto;
-
-            padding: 18px 0;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-        }
-
-        .logo {
-
-            width: 45px;
-
-            height: 45px;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            border-radius: 12px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--purple),
-                    var(--cyan)
-                );
-
-            font-size: 17px;
-
-            font-weight: 800;
-
-            box-shadow:
-                0 0 25px
-                rgba(139,92,246,0.25);
-        }
-
-        nav {
-
-            display: flex;
-
-            gap: 30px;
-        }
-
-        nav a {
-
-            color: var(--muted);
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            transition: 0.3s;
-        }
-
-        nav a:hover,
-        nav a.active {
-
-            color: #ffffff;
-        }
-
-
-        /* =========================
-           COMMON
-        ========================= */
-
-        .container {
-
-            width: 90%;
-
-            max-width: var(--max-width);
-
-            margin: auto;
-        }
-
-        section {
-
-            padding: 90px 0;
-        }
-
-        .tag {
-
-            display: inline-block;
-
-            padding: 8px 14px;
-
-            border-radius: 50px;
-
-            background:
-                rgba(139,92,246,0.08);
-
-            border:
-                1px solid
-                rgba(139,92,246,0.3);
-
-            color: var(--purple-light);
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            letter-spacing: 0.5px;
-        }
-
-
-        /* =========================
-           PAGE HERO
-        ========================= */
-
-        .page-hero {
-
-            padding:
-                110px 0
-                60px;
-
-            text-align: center;
-        }
-
-        .page-hero h1 {
-
-            font-size:
-                clamp(45px, 7vw, 70px);
-
-            line-height: 1.1;
-
-            margin: 20px 0;
-        }
-
-        .gradient {
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #a78bfa,
-                    #22d3ee
-                );
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            color: transparent;
-        }
-
-        .page-description {
-
-            max-width: 700px;
-
-            margin: auto;
-
-            color: var(--muted);
-
-            font-size: 16px;
-        }
-
-
-        /* =========================
-           PROJECT STATS
-        ========================= */
-
-        .project-stats {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 15px;
-
-            margin-top: 45px;
-        }
-
-        .project-stat {
-
-            padding: 22px;
-
-            background: var(--card);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 15px;
-
-            text-align: center;
-        }
-
-        .project-stat h3 {
-
-            color: var(--purple-light);
-
-            font-size: 27px;
-        }
-
-        .project-stat p {
-
-            color: var(--muted);
-
-            font-size: 13px;
-        }
-
-
-        /* =========================
-           PROJECT GRID
-        ========================= */
-
-        .projects-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 22px;
-
-            margin-top: 45px;
-        }
-
-
-        /* =========================
-           PROJECT CARD
-        ========================= */
-
-        .project-card {
-
-            position: relative;
-
-            padding: 30px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #101018,
-                    #0d0d14
-                );
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 20px;
-
-            overflow: hidden;
-
-            transition:
-                transform 0.3s,
-                border-color 0.3s,
-                box-shadow 0.3s;
-        }
-
-        .project-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 180px;
-
-            height: 180px;
-
-            top: -100px;
-
-            right: -80px;
-
-            background:
-                var(--purple);
-
-            filter: blur(90px);
-
-            opacity: 0.08;
-
-            transition: 0.3s;
-        }
-
-        .project-card:hover {
-
-            transform:
-                translateY(-7px);
-
-            border-color:
-                rgba(139,92,246,0.4);
-
-            box-shadow:
-                0 25px 60px
-                rgba(0,0,0,0.35);
-        }
-
-        .project-card:hover::before {
-
-            opacity: 0.18;
-        }
-
-
-        /* =========================
-           PROJECT TOP
-        ========================= */
-
-        .project-top {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 22px;
-        }
-
-        .project-number {
-
-            width: 48px;
-
-            height: 48px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 13px;
-
-            background:
-                rgba(139,92,246,0.1);
-
-            border:
-                1px solid
-                rgba(139,92,246,0.2);
-
-            color:
-                var(--purple-light);
-
-            font-weight: 800;
-
-            font-size: 14px;
-        }
-
-        .github-icon {
-
-            width: 38px;
-
-            height: 38px;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            border-radius: 10px;
-
-            border:
-                1px solid var(--border);
-
-            color: var(--muted);
-
-            font-size: 18px;
-
-            transition: 0.3s;
-        }
-
-        .github-icon:hover {
-
-            color: white;
-
-            border-color:
-                var(--purple);
-
-            background:
-                rgba(139,92,246,0.1);
-        }
-
-
-        /* =========================
-           PROJECT CONTENT
-        ========================= */
-
-        .project-card h2 {
-
-            font-size: 23px;
-
-            margin-bottom: 10px;
-        }
-
-        .project-card h2 span {
-
-            color:
-                var(--purple-light);
-        }
-
-        .project-card p {
-
-            color: var(--muted);
-
-            font-size: 14px;
-
-            min-height: 72px;
-
-            margin-bottom: 20px;
-        }
-
-
-        /* =========================
-           TAGS
-        ========================= */
-
-        .tech-stack {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 8px;
-
-            margin-bottom: 23px;
-        }
-
-        .tech {
-
-            padding:
-                5px 10px;
-
-            border-radius: 50px;
-
-            background:
-                rgba(255,255,255,0.04);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
-
-            color:
-                #d4d4d8;
-
-            font-size: 11px;
-        }
-
-
-        /* =========================
-           PROJECT BUTTON
-        ========================= */
-
-        .project-btn {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            padding:
-                10px 15px;
-
-            border-radius: 9px;
-
-            background:
-                rgba(139,92,246,0.1);
-
-            border:
-                1px solid
-                rgba(139,92,246,0.25);
-
-            color:
-                var(--purple-light);
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            transition: 0.3s;
-        }
-
-        .project-btn:hover {
-
-            background:
-                var(--purple);
-
-            color: white;
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        /* =========================
-           FEATURED PROJECT
-        ========================= */
-
-        .featured {
-
-            grid-column:
-                span 2;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(139,92,246,0.12),
-                    rgba(34,211,238,0.04)
-                );
-        }
-
-        .featured-content {
-
-            display: grid;
-
-            grid-template-columns:
-                1.2fr 0.8fr;
-
-            gap: 30px;
-
-            align-items: center;
-        }
-
-        .featured-label {
-
-            display: inline-block;
-
-            padding:
-                6px 10px;
-
-            margin-bottom: 13px;
-
-            border-radius: 50px;
-
-            background:
-                rgba(34,211,238,0.08);
-
-            border:
-                1px solid
-                rgba(34,211,238,0.2);
-
-            color:
-                #67e8f9;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 1px;
-        }
-
-        .featured-visual {
-
-            min-height: 220px;
-
-            border-radius: 17px;
-
-            border:
-                1px solid var(--border);
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(139,92,246,0.18),
-                    transparent 60%
-                );
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        .code-box {
-
-            width: 75%;
-
-            padding: 20px;
-
-            border-radius: 12px;
-
-            background:
-                rgba(0,0,0,0.35);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.08);
-
-            color:
-                #a78bfa;
-
-            font-family:
-                monospace;
-
-            font-size: 12px;
-
-            line-height: 1.8;
-
-            box-shadow:
-                0 20px 50px
-                rgba(0,0,0,0.3);
-        }
-
-        .code-blue {
-            color:
-                #67e8f9;
-        }
-
-        .code-green {
-            color:
-                #86efac;
-        }
-
-
-        /* =========================
-           GITHUB SECTION
-        ========================= */
-
-        .github-section {
-
-            margin-top: 80px;
-
-            padding: 45px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 22px;
-
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(139,92,246,0.08),
-                    rgba(34,211,238,0.03)
-                );
-        }
-
-        .github-section h2 {
-
-            font-size: 30px;
-
-            margin-bottom: 10px;
-        }
-
-        .github-section p {
-
-            color: var(--muted);
-
-            max-width: 650px;
-
-            margin:
-                0 auto 25px;
-        }
-
-        .github-btn {
-
-            display: inline-block;
-
-            padding:
-                12px 20px;
-
-            border-radius: 10px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--purple),
-                    #6366f1
-                );
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            transition: 0.3s;
-        }
-
-        .github-btn:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                0 12px 30px
-                rgba(139,92,246,0.3);
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-
-            padding: 35px 0;
-
-            text-align: center;
-
-            color: var(--muted);
-
-            font-size: 13px;
-
-            border-top:
-                1px solid var(--border);
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .projects-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-            .featured {
-
-                grid-column:
-                    span 1;
-            }
-
-            .featured-content {
-
-                grid-template-columns: 1fr;
-            }
-
-            .featured-visual {
-
-                min-height: 180px;
-            }
-
-            .project-stats {
-
-                grid-template-columns:
-                    repeat(3, 1fr);
-            }
-
-        }
-
-
-        @media (max-width: 650px) {
-
-            .navbar {
-
-                padding:
-                    15px 0;
-            }
-
-            nav {
-
-                gap: 13px;
-            }
-
-            nav a {
-
-                font-size: 11px;
-            }
-
-            section {
-
-                padding: 70px 0;
-            }
-
-            .page-hero {
-
-                padding:
-                    80px 0
-                    50px;
-            }
-
-            .page-hero h1 {
-
-                font-size: 45px;
-            }
-
-            .project-stats {
-
-                grid-template-columns: 1fr;
-            }
-
-            .project-card {
-
-                padding: 23px;
-            }
-
-            .github-section {
-
-                padding: 30px 20px;
-            }
-
-        }
-
-
-        @media (max-width: 450px) {
-
-            .logo {
-
-                width: 40px;
-                height: 40px;
-            }
-
-            nav {
-
-                gap: 8px;
-            }
-
-            nav a {
-
-                font-size: 10px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Harsh Mahendra Mishra</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#08080d;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================
+   PROJECT LOADER
+========================= */
+
+#projectLoader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:
+        radial-gradient(circle at center,#151126 0%,#08080d 55%,#050509 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    animation:projectLoaderHide .8s ease 2.25s forwards;
+}
+
+@keyframes projectLoaderHide{
+    to{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        z-index:-1;
+    }
+}
+
+.project-loader-box{
+    width:90%;
+    max-width:500px;
+    text-align:center;
+    position:relative;
+}
+
+/* scan circle */
+
+.scan-circle{
+    width:150px;
+    height:150px;
+    margin:auto;
+    border-radius:50%;
+    border:1px solid rgba(34,211,238,.35);
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+        0 0 25px rgba(34,211,238,.15),
+        inset 0 0 25px rgba(139,92,246,.1);
+
+    animation:circlePulse 1.5s infinite;
+}
+
+@keyframes circlePulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+/* scanning line */
+
+.scan-circle::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:2px;
+    background:#22d3ee;
+    box-shadow:0 0 15px #22d3ee;
+    top:50%;
+    left:0;
+
+    animation:scanLine 1s linear infinite;
+}
+
+@keyframes scanLine{
+    0%{
+        transform:translateY(-55px);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(55px);
+        opacity:0;
+    }
+}
+
+.loader-code{
+    font-size:35px;
+    font-weight:bold;
+    color:#22d3ee;
+    text-shadow:0 0 20px rgba(34,211,238,.8);
+    letter-spacing:3px;
+}
+
+.project-loader-box h2{
+    margin-top:30px;
+    font-size:20px;
+    letter-spacing:4px;
+}
+
+.project-loader-box p{
+    margin-top:8px;
+    color:#22d3ee;
+    font-size:11px;
+    letter-spacing:4px;
+}
+
+/* loading dots */
+
+.loading-dots{
+    margin-top:25px;
+}
+
+.loading-dots span{
+    display:inline-block;
+    width:7px;
+    height:7px;
+    margin:0 4px;
+    background:#8b5cf6;
+    border-radius:50%;
+    animation:dotAnimation 1s infinite;
+}
+
+.loading-dots span:nth-child(2){
+    animation-delay:.15s;
+}
+
+.loading-dots span:nth-child(3){
+    animation-delay:.3s;
+}
+
+@keyframes dotAnimation{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.3;
+    }
+
+    50%{
+        transform:translateY(-8px);
+        opacity:1;
+        box-shadow:0 0 12px #8b5cf6;
+    }
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(15px);
+    background:rgba(8,8,13,.82);
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.navbar{
+    max-width:1150px;
+    margin:auto;
+    padding:16px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo img{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #8b5cf6;
+    box-shadow:0 0 18px rgba(139,92,246,.45);
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:rotate(8deg) scale(1.08);
+}
+
+nav{
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    color:#aaa;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover,
+nav a.active{
+    color:#fff;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:90px 25px;
+}
+
+.page-heading{
+    text-align:center;
+    margin-bottom:65px;
+    animation:fadeUp .8s ease both;
+}
+
+.page-heading span{
+    color:#22d3ee;
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.page-heading h1{
+    font-size:48px;
+    margin-top:12px;
+}
+
+.page-heading p{
+    color:#999;
+    margin-top:15px;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   PROJECT GRID
+========================= */
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.project-card{
+    position:relative;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.07),
+        rgba(255,255,255,.025)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:28px;
+
+    min-height:300px;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+    animation:cardReveal .8s ease both;
+}
+
+.project-card:nth-child(2){
+    animation-delay:.1s;
+}
+
+.project-card:nth-child(3){
+    animation-delay:.2s;
+}
+
+.project-card:nth-child(4){
+    animation-delay:.3s;
+}
+
+.project-card:nth-child(5){
+    animation-delay:.4s;
+}
+
+.project-card:nth-child(6){
+    animation-delay:.5s;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(139,92,246,.55);
+    box-shadow:0 20px 45px rgba(0,0,0,.4);
+}
+
+.project-card::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:#8b5cf6;
+    filter:blur(80px);
+    opacity:.15;
+    top:-50px;
+    right:-50px;
+}
+
+@keyframes cardReveal{
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.project-number{
+    font-size:12px;
+    color:#22d3ee;
+    letter-spacing:2px;
+}
+
+.project-card h2{
+    margin-top:18px;
+    font-size:22px;
+}
+
+.project-card p{
+    margin-top:14px;
+    color:#999;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:20px;
+}
+
+.tags span{
+    font-size:11px;
+    padding:6px 10px;
+    border-radius:20px;
+    background:rgba(139,92,246,.12);
+    color:#c8b5ff;
+    border:1px solid rgba(139,92,246,.2);
+}
+
+.project-link{
+    display:inline-block;
+    margin-top:22px;
+    color:#22d3ee;
+    font-size:13px;
+    transition:.3s;
+}
+
+.project-link:hover{
+    letter-spacing:1px;
+}
+
+/* FEATURED */
+
+.featured{
+    grid-column:span 2;
+    min-height:340px;
+}
+
+.featured h2{
+    font-size:28px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.stat{
+    text-align:center;
+    padding:30px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.07);
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-6px);
+    border-color:#22d3ee;
+}
+
+.stat h2{
+    color:#22d3ee;
+    font-size:30px;
+}
+
+.stat p{
+    margin-top:8px;
+    color:#888;
+    font-size:13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:35px 20px;
+    color:#777;
+    border-top:1px solid rgba(255,255,255,.06);
+    font-size:13px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+    .projects-grid{
+        grid-template-columns:1fr;
+    }
+
+    .featured{
+        grid-column:span 1;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .page-heading h1{
+        font-size:38px;
+    }
+}
+
+@media(max-width:650px){
+
+    .navbar{
+        padding:14px 18px;
+    }
+
+    nav{
+        gap:14px;
+    }
+
+    nav a{
+        font-size:12px;
+    }
+
+    .container{
+        padding:65px 18px;
+    }
+}
+
+</style>
 </head>
-
 
 <body>
 
+<!-- =========================
+     PROJECT LOADER
+========================= -->
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<div id="projectLoader">
 
-    <header>
+    <div class="project-loader-box">
 
-        <div class="navbar">
-
-            <a href="index.html" class="logo">
-                HM
-            </a>
-
-            <nav>
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="projects.html" class="active">
-                    Projects
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </nav>
-
+        <div class="scan-circle">
+            <div class="loader-code">&lt;/&gt;</div>
         </div>
 
-    </header>
+        <h2>PROJECT LAB</h2>
 
+        <p>SCANNING PROJECTS</p>
 
-
-    <!-- =========================
-         PAGE HERO
-    ========================== -->
-
-    <section class="page-hero">
-
-        <div class="container">
-
-            <span class="tag">
-                MY WORK
-            </span>
-
-            <h1>
-
-                Projects I've
-                <span class="gradient">
-                    built.
-                </span>
-
-            </h1>
-
-            <p class="page-description">
-
-                A collection of projects covering
-                software development, web development,
-                cybersecurity, networking and AI.
-
-            </p>
-
-
-            <div class="project-stats">
-
-                <div class="project-stat">
-
-                    <h3>
-                        8+
-                    </h3>
-
-                    <p>
-                        Featured Projects
-                    </p>
-
-                </div>
-
-
-                <div class="project-stat">
-
-                    <h3>
-                        5+
-                    </h3>
-
-                    <p>
-                        Technologies
-                    </p>
-
-                </div>
-
-
-                <div class="project-stat">
-
-                    <h3>
-                        GitHub
-                    </h3>
-
-                    <p>
-                        Open Source Work
-                    </p>
-
-                </div>
-
-            </div>
-
+        <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-    </section>
+    </div>
 
+</div>
 
 
-    <!-- =========================
-         PROJECTS
-    ========================== -->
+<!-- =========================
+     NAVBAR
+========================= -->
 
-    <section>
+<header>
 
-        <div class="container">
+<div class="navbar">
 
-            <div class="projects-grid">
+<a href="index.html" class="logo">
+<img src="https://avatars.githubusercontent.com/u/190022282?v=4"
+     alt="Harsh Mahendra Mishra">
+</a>
 
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="projects.html" class="active">Projects</a>
+<a href="contact.html">Contact</a>
+</nav>
 
-                <!-- =========================
-                     PROJECT 01
-                ========================== -->
+</div>
 
-                <article class="project-card featured">
+</header>
 
-                    <div class="featured-content">
 
-                        <div>
+<!-- =========================
+     PROJECTS
+========================= -->
 
-                            <span class="featured-label">
-                                FEATURED PROJECT
-                            </span>
+<main class="container">
 
-                            <div class="project-top">
+<div class="page-heading">
 
-                                <div class="project-number">
-                                    01
-                                </div>
+<span>MY WORK</span>
 
-                            </div>
+<h1>Projects</h1>
 
-                            <h2>
-                                DevConnect
-                                <span>
-                                    Student Platform
-                                </span>
-                            </h2>
+<p>
+Some of the projects I have built while learning software development,
+web development and cybersecurity.
+</p>
 
-                            <p>
+</div>
 
-                                A Java-based student platform
-                                designed to connect students,
-                                projects and collaborative
-                                opportunities through a
-                                database-driven web application.
 
-                            </p>
+<div class="projects-grid">
 
 
-                            <div class="tech-stack">
+<!-- PROJECT 1 -->
 
-                                <span class="tech">
-                                    Java
-                                </span>
+<div class="project-card featured">
 
-                                <span class="tech">
-                                    Jakarta EE
-                                </span>
+<div class="project-number">01 / FEATURED</div>
 
-                                <span class="tech">
-                                    JSP
-                                </span>
+<h2>Developer Connect Hub</h2>
 
-                                <span class="tech">
-                                    Servlets
-                                </span>
+<p>
+A Java-based student developer platform designed to connect students,
+developers and project teams. The platform includes authentication,
+profiles, projects, requests and team collaboration features.
+</p>
 
-                                <span class="tech">
-                                    JDBC
-                                </span>
+<div class="tags">
+<span>Java</span>
+<span>Jakarta EE</span>
+<span>Servlet</span>
+<span>JSP</span>
+<span>JDBC</span>
+<span>MySQL</span>
+<span>Tomcat</span>
+</div>
 
-                                <span class="tech">
-                                    MySQL
-                                </span>
+<a class="project-link"
+   href="https://github.com/Harsh2k7/DevConnect-Student-Platform"
+   target="_blank">
+View on GitHub →
+</a>
 
-                                <span class="tech">
-                                    Tomcat
-                                </span>
+</div>
 
-                            </div>
 
+<!-- PROJECT 2 -->
 
-                            <a
-                                href="https://github.com/Harsh2k7/DevConnect-Student-Platform"
-                                target="_blank"
-                                class="project-btn"
-                            >
+<div class="project-card">
 
-                                View on GitHub
-                                ↗
+<div class="project-number">02</div>
 
-                            </a>
+<h2>Cybercrime Resolution System</h2>
 
-                        </div>
+<p>
+A web-based system designed for managing cybercrime cases,
+officers and case-related information.
+</p>
 
+<div class="tags">
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+<span>Flask</span>
+<span>MySQL</span>
+</div>
 
-                        <div class="featured-visual">
+<a class="project-link"
+   href="https://github.com/Harsh2k7/cybercrime-resolution-system"
+   target="_blank">
+View on GitHub →
+</a>
 
-                            <div class="code-box">
+</div>
 
-                                <span class="code-blue">
-                                    &lt;project&gt;
-                                </span>
 
-                                <br>
+<!-- PROJECT 3 -->
 
-                                &nbsp;&nbsp;Java Web App
+<div class="project-card">
 
-                                <br>
+<div class="project-number">03</div>
 
-                                &nbsp;&nbsp;JSP + Servlet
+<h2>Secure Coding Checker</h2>
 
-                                <br>
+<p>
+A Python-based project focused on identifying security-related
+coding issues and encouraging secure development practices.
+</p>
 
-                                &nbsp;&nbsp;JDBC + MySQL
+<div class="tags">
+<span>Python</span>
+<span>Security</span>
+<span>Secure Coding</span>
+</div>
 
-                                <br>
+<a class="project-link"
+   href="https://github.com/Harsh2k7/Secure-coding-"
+   target="_blank">
+View on GitHub →
+</a>
 
-                                &nbsp;&nbsp;Apache Tomcat
+</div>
 
-                                <br>
 
-                                <span class="code-green">
-                                    &lt;/project&gt;
-                                </span>
+<!-- PROJECT 4 -->
 
-                            </div>
+<div class="project-card">
 
-                        </div>
+<div class="project-number">04</div>
 
-                    </div>
+<h2>E-Commerce Web App</h2>
 
-                </article>
+<p>
+A full-stack ecommerce application with products, authentication,
+cart functionality and order placement.
+</p>
 
+<div class="tags">
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+<span>Flask</span>
+<span>MySQL</span>
+</div>
 
+<a class="project-link"
+   href="https://github.com/Harsh2k7/ecommerce-webapp-flask"
+   target="_blank">
+View on GitHub →
+</a>
 
-                <!-- =========================
-                     PROJECT 02
-                ========================== -->
+</div>
 
-                <article class="project-card">
 
-                    <div class="project-top">
+<!-- PROJECT 5 -->
 
-                        <div class="project-number">
-                            02
-                        </div>
+<div class="project-card">
 
-                        <a
-                            href="https://github.com/Harsh2k7/cybercrime-resolution-system"
-                            target="_blank"
-                            class="github-icon"
-                        >
-                            ↗
-                        </a>
+<div class="project-number">05</div>
 
-                    </div>
+<h2>Basic Network Sniffer</h2>
 
+<p>
+A Python networking project for capturing and analysing live
+network packets using Scapy.
+</p>
 
-                    <h2>
-                        Cybercrime
-                        <span>
-                            Resolution System
-                        </span>
-                    </h2>
+<div class="tags">
+<span>Python</span>
+<span>Scapy</span>
+<span>Networking</span>
+<span>Cybersecurity</span>
+</div>
 
+<a class="project-link"
+   href="https://github.com/Harsh2k7/Basic-Network-sniffer"
+   target="_blank">
+View on GitHub →
+</a>
 
-                    <p>
+</div>
 
-                        A web-based system for managing
-                        cybercrime cases, officers and
-                        case-related information using
-                        a structured backend.
 
-                    </p>
+<!-- PROJECT 6 -->
 
+<div class="project-card">
 
-                    <div class="tech-stack">
+<div class="project-number">06</div>
 
-                        <span class="tech">
-                            HTML
-                        </span>
+<h2>Multi-Agent Productivity Assistant</h2>
 
-                        <span class="tech">
-                            CSS
-                        </span>
+<p>
+An AI-focused project exploring multiple agents working together
+to improve productivity and task automation.
+</p>
 
-                        <span class="tech">
-                            JavaScript
-                        </span>
+<div class="tags">
+<span>Python</span>
+<span>AI</span>
+<span>Agents</span>
+<span>Automation</span>
+</div>
 
-                        <span class="tech">
-                            Flask
-                        </span>
+<a class="project-link"
+   href="https://github.com/Harsh2k7/Multi-Agent-Productivity-Assistant-"
+   target="_blank">
+View on GitHub →
+</a>
 
-                        <span class="tech">
-                            MySQL
-                        </span>
+</div>
 
-                    </div>
 
+</div>
 
-                    <a
-                        href="https://github.com/Harsh2k7/cybercrime-resolution-system"
-                        target="_blank"
-                        class="project-btn"
-                    >
 
-                        View Project ↗
+<!-- =========================
+     STATS
+========================= -->
 
-                    </a>
+<div class="stats">
 
-                </article>
+<div class="stat">
+<h2>10+</h2>
+<p>Projects & Experiments</p>
+</div>
 
+<div class="stat">
+<h2>4+</h2>
+<p>Development Areas</p>
+</div>
 
+<div class="stat">
+<h2>GitHub</h2>
+<p>Open Source Work</p>
+</div>
 
-                <!-- =========================
-                     PROJECT 03
-                ========================== -->
+</div>
 
-                <article class="project-card">
+</main>
 
-                    <div class="project-top">
 
-                        <div class="project-number">
-                            03
-                        </div>
-
-                        <a
-                            href="https://github.com/Harsh2k7/Secure-coding-"
-                            target="_blank"
-                            class="github-icon"
-                        >
-                            ↗
-                        </a>
-
-                    </div>
-
-
-                    <h2>
-                        Secure Coding
-                        <span>
-                            Checker
-                        </span>
-                    </h2>
-
-
-                    <p>
-
-                        A Python-based security-focused
-                        project designed to explore secure
-                        coding practices and identify
-                        potential coding vulnerabilities.
-
-                    </p>
-
-
-                    <div class="tech-stack">
-
-                        <span class="tech">
-                            Python
-                        </span>
-
-                        <span class="tech">
-                            Security
-                        </span>
-
-                        <span class="tech">
-                            Secure Coding
-                        </span>
-
-                    </div>
-
-
-                    <a
-                        href="https://github.com/Harsh2k7/Secure-coding-"
-                        target="_blank"
-                        class="project-btn"
-                    >
-
-                        View Project ↗
-
-                    </a>
-
-                </article>
-
-
-
-                <!-- =========================
-                     PROJECT 04
-                ========================== -->
-
-                <article class="project-card">
-
-                    <div class="project-top">
-
-                        <div class="project-number">
-                            04
-                        </div>
-
-                        <a
-                            href="https://github.com/Harsh2k7/ecommerce-webapp-flask"
-                            target="_blank"
-                            class="github-icon"
-                        >
-                            ↗
-                        </a>
-
-                    </div>
-
-
-                    <h2>
-                        E-commerce
-                        <span>
-                            Web App
-                        </span>
-                    </h2>
-
-
-                    <p>
-
-                        Full-stack e-commerce application
-                        with product management, cart,
-                        authentication and order placement.
-
-                    </p>
-
-
-                    <div class="tech-stack">
-
-                        <span class="tech">
-                            HTML
-                        </span>
-
-                        <span class="tech">
-                            CSS
-                        </span>
-
-                        <span class="tech">
-                            JavaScript
-                        </span>
-
-                        <span class="tech">
-                            Flask
-                        </span>
-
-                        <span class="tech">
-                            MySQL
-                        </span>
-
-                    </div>
-
-
-                    <a
-                        href="https://github.com/Harsh2k7/ecommerce-webapp-flask"
-                        target="_blank"
-                        class="project-btn"
-                    >
-
-                        View Project ↗
-
-                    </a>
-
-                </article>
-
-
-
-                <!-- =========================
-                     PROJECT 05
-                ========================== -->
-
-                <article class="project-card">
-
-                    <div class="project-top">
-
-                        <div class="project-number">
-                            05
-                        </div>
-
-                        <a
-                            href="https://github.com/Harsh2k7/Basic-Network-sniffer"
-                            target="_blank"
-                            class="github-icon"
-                        >
-                            ↗
-                        </a>
-
-                    </div>
-
-
-                    <h2>
-                        Basic Network
-                        <span>
-                            Sniffer
-                        </span>
-                    </h2>
-
-
-                    <p>
-
-                        A Python networking project that
-                        captures and analyzes live network
-                        packets to explore network traffic
-                        and packet-level concepts.
-
-                    </p>
-
-
-                    <div class="tech-stack">
-
-                        <span class="tech">
-                            Python
-                        </span>
-
-                        <span class="tech">
-                            Scapy
-                        </span>
-
-                        <span class="tech">
-                            Networking
-                        </span>
-
-                        <span class="tech">
-                            Cybersecurity
-                        </span>
-
-                    </div>
-
-
-                    <a
-                        href="https://github.com/Harsh2k7/Basic-Network-sniffer"
-                        target="_blank"
-                        class="project-btn"
-                    >
-
-                        View Project ↗
-
-                    </a>
-
-                </article>
-
-
-
-                <!-- =========================
-                     PROJECT 06
-                ========================== -->
-
-                <article class="project-card">
-
-                    <div class="project-top">
-
-                        <div class="project-number">
-                            06
-                        </div>
-
-                        <a
-                            href="https://github.com/Harsh2k7/Multi-Agent-Productivity-Assistant-"
-                            target="_blank"
-                            class="github-icon"
-                        >
-                            ↗
-                        </a>
-
-                    </div>
-
-
-                    <h2>
-                        Multi-Agent
-                        <span>
-                            Productivity Assistant
-                        </span>
-                    </h2>
-
-
-                    <p>
-
-                        An AI-oriented productivity project
-                        exploring multiple agents and
-                        intelligent task-based workflows.
-
-                    </p>
-
-
-                    <div class="tech-stack">
-
-                        <span class="tech">
-                            Python
-                        </span>
-
-                        <span class="tech">
-                            AI
-                        </span>
-
-                        <span class="tech">
-                            GenAI
-                        </span>
-
-                        <span class="tech">
-                            Multi-Agent
-                        </span>
-
-                    </div>
-
-
-                    <a
-                        href="https://github.com/Harsh2k7/Multi-Agent-Productivity-Assistant-"
-                        target="_blank"
-                        class="project-btn"
-                    >
-
-                        View Project ↗
-
-                    </a>
-
-                </article>
-
-
-
-                <!-- =========================
-                     PROJECT 07
-                ========================== -->
-
-                <article class="project-card">
-
-                    <div class="project-top">
-
-                        <div class="project-number">
-                            07
-                        </div>
-
-                        <a
-                            href="https://github.com/Harsh2k7/EaseMotion-css"
-                            target="_blank"
-                            class="github-icon"
-                        >
-                            ↗
-                        </a>
-
-                    </div>
-
-
-                    <h2>
-                        EaseMotion
-                        <span>
-                            CSS
-                        </span>
-                    </h2>
-
-
-                    <p>
-
-                        An animation-first CSS framework
-                        containing reusable UI components,
-                        modern effects and smooth animations
-                        without external dependencies.
-
-                    </p>
-
-
-                    <div class="tech-stack">
-
-                        <span class="tech">
-                            CSS
-                        </span>
-
-                        <span class="tech">
-                            UI
-                        </span>
-
-                        <span class="tech">
-                            Animation
-                        </span>
-
-                        <span class="tech">
-                            Open Source
-                        </span>
-
-                    </div>
-
-
-                    <a
-                        href="https://github.com/Harsh2k7/EaseMotion-css"
-                        target="_blank"
-                        class="project-btn"
-                    >
-
-                        View Project ↗
-
-                    </a>
-
-                </article>
-
-
-
-                <!-- =========================
-                     PROJECT 08
-                ========================== -->
-
-                <article class="project-card">
-
-                    <div class="project-top">
-
-                        <div class="project-number">
-                            08
-                        </div>
-
-                        <a
-                            href="https://github.com/Harsh2k7/devchain-portal"
-                            target="_blank"
-                            class="github-icon"
-                        >
-                            ↗
-                        </a>
-
-                    </div>
-
-
-                    <h2>
-                        DevChain
-                        <span>
-                            Portal
-                        </span>
-                    </h2>
-
-
-                    <p>
-
-                        A secure coding review project
-                        focused on identifying security
-                        vulnerabilities and promoting
-                        secure development practices.
-
-                    </p>
-
-
-                    <div class="tech-stack">
-
-                        <span class="tech">
-                            HTML
-                        </span>
-
-                        <span class="tech">
-                            CSS
-                        </span>
-
-                        <span class="tech">
-                            JavaScript
-                        </span>
-
-                        <span class="tech">
-                            Security
-                        </span>
-
-                    </div>
-
-
-                    <a
-                        href="https://github.com/Harsh2k7/devchain-portal"
-                        target="_blank"
-                        class="project-btn"
-                    >
-
-                        View Project ↗
-
-                    </a>
-
-                </article>
-
-
-
-                <!-- =========================
-                     PROJECT 09
-                ========================== -->
-
-                <article class="project-card">
-
-                    <div class="project-top">
-
-                        <div class="project-number">
-                            09
-                        </div>
-
-                        <a
-                            href="https://github.com/Harsh2k7/EveAI"
-                            target="_blank"
-                            class="github-icon"
-                        >
-                            ↗
-                        </a>
-
-                    </div>
-
-
-                    <h2>
-                        EveAI
-                    </h2>
-
-
-                    <p>
-
-                        A modern AI-oriented web and
-                        application interface project
-                        exploring health and wellness
-                        focused user experiences.
-
-                    </p>
-
-
-                    <div class="tech-stack">
-
-                        <span class="tech">
-                            JavaScript
-                        </span>
-
-                        <span class="tech">
-                            UI/UX
-                        </span>
-
-                        <span class="tech">
-                            AI
-                        </span>
-
-                        <span class="tech">
-                            Web
-                        </span>
-
-                    </div>
-
-
-                    <a
-                        href="https://github.com/Harsh2k7/EveAI"
-                        target="_blank"
-                        class="project-btn"
-                    >
-
-                        View Project ↗
-
-                    </a>
-
-                </article>
-
-            </div>
-
-
-
-            <!-- =========================
-                 GITHUB
-            ========================== -->
-
-            <div class="github-section">
-
-                <h2>
-                    More projects on GitHub
-                </h2>
-
-                <p>
-
-                    Explore my repositories, experiments,
-                    learning projects and open-source work.
-
-                </p>
-
-                <a
-                    href="https://github.com/Harsh2k7"
-                    target="_blank"
-                    class="github-btn"
-                >
-
-                    Visit My GitHub ↗
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="container">
-
-            © 2026 Harsh Mahendra Mishra.
-            Built with HTML & CSS.
-
-        </div>
-
-    </footer>
-
+<footer>
+© 2026 Harsh Mahendra Mishra 
+</footer>
 
 </body>
-
 </html>
