@@ -1,941 +1,1556 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Harsh Mahendra Mishra | Software Developer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Harsh Mahendra Mishra - Aspiring Software Engineer, Cybersecurity Enthusiast and AI & GenAI learner.">
+<title>Harsh Mahendra Mishra | Software Developer</title>
 
-    <style>
+<style>
 
-        /* =========================
-           RESET
-        ========================= */
+/* =====================================================
+   GLOBAL
+===================================================== */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #08080d;
-            color: #ffffff;
-            line-height: 1.6;
-        }
+:root{
+    --bg:#050509;
+    --bg2:#0a0a10;
+    --card:rgba(18,18,28,.72);
+    --border:rgba(255,255,255,.09);
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+    --purple:#8b5cf6;
+    --purple2:#6d28d9;
+    --cyan:#22d3ee;
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
+    --white:#f5f5f7;
+    --muted:#9b9baa;
+}
 
+body{
+    font-family:Arial,Helvetica,sans-serif;
 
-        /* =========================
-           VARIABLES
-        ========================= */
+    color:var(--white);
 
-        :root {
-            --bg: #08080d;
-            --card: #101018;
-            --card2: #141420;
-            --border: rgba(255,255,255,0.09);
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(139,92,246,.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(34,211,238,.09),
+            transparent 28%
+        ),
+        var(--bg);
 
-            --purple: #8b5cf6;
-            --purple-light: #a78bfa;
+    min-height:100vh;
+    overflow-x:hidden;
+}
 
-            --cyan: #22d3ee;
 
-            --text: #ffffff;
-            --muted: #a1a1aa;
+/* =====================================================
+   INDEX LOADING SCREEN
+   FULL PREMIUM ENTRY ANIMATION
+===================================================== */
 
-            --max-width: 1180px;
-        }
+#loader{
 
+    position:fixed;
 
-        /* =========================
-           NAVBAR
-        ========================= */
+    inset:0;
 
-        header {
-            width: 100%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+    z-index:99999;
 
-            background: rgba(8,8,13,0.92);
-            border-bottom: 1px solid var(--border);
-        }
+    display:flex;
 
-        .navbar {
-            max-width: var(--max-width);
-            margin: auto;
+    align-items:center;
 
-            padding: 18px 25px;
+    justify-content:center;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    background:
+        radial-gradient(
+            circle at center,
+            #19152e 0%,
+            #09090f 50%,
+            #030305 100%
+        );
 
-        .logo {
-            width: 45px;
-            height: 45px;
+    /*
+       IMPORTANT:
+       CSS automatically hides loader.
+       JS failure cannot cause infinite loading.
+    */
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    animation:
+        loaderAutoHide .7s ease 2.4s forwards;
+}
 
-            border-radius: 12px;
 
-            background: linear-gradient(
-                135deg,
-                var(--purple),
-                var(--cyan)
-            );
+@keyframes loaderAutoHide{
 
-            font-size: 18px;
-            font-weight: 800;
+    0%{
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+    }
 
-            box-shadow:
-                0 0 25px rgba(139,92,246,0.25);
-        }
+    99%{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+    }
 
-        nav {
-            display: flex;
-            gap: 30px;
-        }
+    100%{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        display:none;
+    }
 
-        nav a {
-            color: var(--muted);
-            font-size: 14px;
-            font-weight: 600;
+}
 
-            transition: 0.3s;
-        }
 
-        nav a:hover,
-        nav a.active {
-            color: white;
-        }
+.loader-content{
 
+    width:90%;
 
-        /* =========================
-           COMMON
-        ========================= */
+    max-width:430px;
 
-        .container {
-            width: 90%;
-            max-width: var(--max-width);
-            margin: auto;
-        }
+    text-align:center;
 
-        section {
-            padding: 100px 0;
-        }
+    position:relative;
 
-        .tag {
-            display: inline-block;
+    animation:
+        loaderContentIn 1s ease forwards;
+}
 
-            padding: 8px 14px;
 
-            border: 1px solid rgba(139,92,246,0.3);
-            border-radius: 50px;
+@keyframes loaderContentIn{
 
-            background: rgba(139,92,246,0.08);
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.94);
+    }
 
-            color: var(--purple-light);
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
 
-            font-size: 13px;
-            font-weight: 700;
-        }
+}
 
-        .section-title {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
 
-        .section-title span {
-            color: var(--purple-light);
-        }
+/* PHOTO */
 
-        .section-text {
-            color: var(--muted);
-            max-width: 700px;
-        }
+.loader-photo{
 
+    width:120px;
 
-        /* =========================
-           HERO
-        ========================= */
+    height:120px;
 
-        .hero {
-            min-height: calc(100vh - 80px);
+    margin:auto;
 
-            display: flex;
-            align-items: center;
-        }
+    position:relative;
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 70px;
+    z-index:2;
+}
 
-            align-items: center;
-        }
 
-        .availability {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
+.loader-photo img{
 
-            margin-bottom: 25px;
+    width:100%;
 
-            padding: 8px 13px;
+    height:100%;
 
-            border-radius: 50px;
+    object-fit:cover;
 
-            background: rgba(34,211,238,0.08);
-            border: 1px solid rgba(34,211,238,0.2);
+    border-radius:50%;
 
-            color: #67e8f9;
+    border:3px solid var(--purple);
 
-            font-size: 13px;
-            font-weight: 600;
-        }
+    box-shadow:
+        0 0 25px rgba(139,92,246,.5),
+        0 0 60px rgba(139,92,246,.25);
 
-        .dot {
-            width: 8px;
-            height: 8px;
+    animation:
+        loaderPhotoPulse 1.5s ease-in-out infinite;
 
-            border-radius: 50%;
+}
 
-            background: #22c55e;
-            box-shadow: 0 0 10px #22c55e;
-        }
 
-        .hero h1 {
-            font-size: clamp(45px, 7vw, 82px);
-            line-height: 1.02;
+@keyframes loaderPhotoPulse{
 
-            letter-spacing: -3px;
+    0%,100%{
+        transform:scale(1);
 
-            margin-bottom: 20px;
-        }
+        box-shadow:
+            0 0 20px rgba(139,92,246,.4),
+            0 0 50px rgba(139,92,246,.15);
+    }
 
-        .gradient-text {
-            background: linear-gradient(
-                90deg,
-                #ffffff,
-                #a78bfa,
-                #22d3ee
-            );
+    50%{
+        transform:scale(1.07);
 
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+        box-shadow:
+            0 0 40px rgba(139,92,246,.85),
+            0 0 80px rgba(139,92,246,.3);
+    }
 
-        .hero-subtitle {
-            font-size: 23px;
-            color: #d4d4d8;
-            margin-bottom: 20px;
-        }
+}
 
-        .hero-description {
-            max-width: 650px;
 
-            color: var(--muted);
+/* ROTATING RING */
 
-            font-size: 16px;
+.loader-ring{
 
-            margin-bottom: 35px;
-        }
+    position:absolute;
 
+    width:148px;
 
-        /* =========================
-           BUTTONS
-        ========================= */
+    height:148px;
 
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+    left:50%;
 
-        .btn {
-            display: inline-flex;
+    top:-14px;
 
-            padding: 13px 21px;
+    transform:translateX(-50%);
 
-            border-radius: 10px;
+    border-radius:50%;
 
-            font-size: 14px;
-            font-weight: 700;
+    border:2px solid transparent;
 
-            transition: 0.3s;
-        }
+    border-top-color:var(--cyan);
 
-        .btn-primary {
-            background: linear-gradient(
-                135deg,
-                var(--purple),
-                #6366f1
-            );
+    border-right-color:var(--purple);
 
-            box-shadow:
-                0 10px 30px rgba(139,92,246,0.2);
-        }
+    border-bottom-color:rgba(139,92,246,.25);
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow:
-                0 15px 35px rgba(139,92,246,0.35);
-        }
+    animation:
+        loaderRotate 1s linear infinite;
 
-        .btn-secondary {
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.03);
-            color: #e4e4e7;
-        }
+}
 
-        .btn-secondary:hover {
-            border-color: rgba(139,92,246,0.5);
-            transform: translateY(-3px);
-        }
 
+@keyframes loaderRotate{
 
-        /* =========================
-           PROFILE CARD
-        ========================= */
+    from{
+        transform:translateX(-50%) rotate(0deg);
+    }
 
-        .profile-card {
-            position: relative;
+    to{
+        transform:translateX(-50%) rotate(360deg);
+    }
 
-            padding: 35px;
+}
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(139,92,246,0.12),
-                    rgba(34,211,238,0.04)
-                );
 
-            border: 1px solid var(--border);
+/* TEXT */
 
-            border-radius: 25px;
+.loader-content h2{
 
-            text-align: center;
+    margin-top:35px;
 
-            box-shadow:
-                0 30px 80px rgba(0,0,0,0.35);
-        }
+    font-size:20px;
 
-        .profile-card::before {
-            content: "";
+    letter-spacing:3px;
 
-            position: absolute;
+    color:white;
 
-            width: 180px;
-            height: 180px;
+}
 
-            background: var(--purple);
 
-            filter: blur(90px);
-            opacity: 0.18;
+.loader-content p{
 
-            top: -50px;
-            left: 50%;
+    margin-top:9px;
 
-            transform: translateX(-50%);
-        }
+    font-size:11px;
 
-        .profile-img {
-            position: relative;
+    letter-spacing:4px;
 
-            width: 170px;
-            height: 170px;
+    color:var(--cyan);
 
-            margin: auto auto 20px;
+}
 
-            border-radius: 50%;
 
-            object-fit: cover;
+/* LOADING BAR */
 
-            border: 3px solid rgba(167,139,250,0.6);
+.loader-bar{
 
-            box-shadow:
-                0 0 40px rgba(139,92,246,0.25);
-        }
+    width:100%;
 
-        .profile-card h3 {
-            font-size: 22px;
-            margin-bottom: 6px;
-        }
+    height:4px;
 
-        .profile-card p {
-            color: var(--muted);
-            font-size: 14px;
-        }
+    margin-top:30px;
 
+    background:#20202b;
 
-        /* =========================
-           STATS
-        ========================= */
+    border-radius:20px;
 
-        .stats {
-            display: grid;
+    overflow:hidden;
 
-            grid-template-columns:
-                repeat(4, 1fr);
+}
 
-            gap: 15px;
 
-            margin-top: 70px;
-        }
+.loader-progress{
 
-        .stat {
-            padding: 25px;
+    width:0%;
 
-            background: var(--card);
+    height:100%;
 
-            border: 1px solid var(--border);
+    border-radius:20px;
 
-            border-radius: 15px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--cyan)
+        );
 
-            text-align: center;
-        }
+    animation:
+        loadingProgress 2.1s ease forwards;
 
-        .stat h3 {
-            font-size: 28px;
-            color: var(--purple-light);
-        }
+}
 
-        .stat p {
-            color: var(--muted);
-            font-size: 13px;
-        }
 
+@keyframes loadingProgress{
 
-        /* =========================
-           FOCUS CARDS
-        ========================= */
+    0%{
+        width:0%;
+    }
 
-        .focus-grid {
-            display: grid;
+    25%{
+        width:25%;
+    }
 
-            grid-template-columns:
-                repeat(3, 1fr);
+    50%{
+        width:52%;
+    }
 
-            gap: 20px;
+    75%{
+        width:78%;
+    }
 
-            margin-top: 40px;
-        }
+    100%{
+        width:100%;
+    }
 
-        .focus-card {
-            padding: 30px;
+}
 
-            background: var(--card);
 
-            border: 1px solid var(--border);
+.loader-percent{
 
-            border-radius: 18px;
+    display:block;
 
-            transition: 0.3s;
-        }
+    margin-top:10px;
 
-        .focus-card:hover {
-            transform: translateY(-6px);
+    font-size:13px;
 
-            border-color:
-                rgba(139,92,246,0.4);
+    color:#9999aa;
 
-            box-shadow:
-                0 20px 50px rgba(0,0,0,0.25);
-        }
+}
 
-        .icon {
-            width: 50px;
-            height: 50px;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+/* =====================================================
+   NAVBAR
+===================================================== */
 
-            border-radius: 12px;
+header{
 
-            background:
-                rgba(139,92,246,0.12);
+    position:fixed;
 
-            color: var(--purple-light);
+    top:0;
 
-            font-size: 22px;
+    left:0;
 
-            margin-bottom: 20px;
-        }
+    right:0;
 
-        .focus-card h3 {
-            margin-bottom: 10px;
-        }
+    z-index:1000;
 
-        .focus-card p {
-            color: var(--muted);
-            font-size: 14px;
-        }
+    padding:18px 7%;
 
+    background:
+        rgba(5,5,9,.72);
 
-        /* =========================
-           FOOTER
-        ========================= */
+    backdrop-filter:blur(18px);
 
-        footer {
-            padding: 35px 0;
+    border-bottom:
+        1px solid var(--border);
+}
 
-            border-top: 1px solid var(--border);
 
-            text-align: center;
+.navbar{
 
-            color: var(--muted);
+    max-width:1250px;
 
-            font-size: 13px;
-        }
+    margin:auto;
 
+    display:flex;
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+    align-items:center;
 
-        @media (max-width: 900px) {
+    justify-content:space-between;
 
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+}
 
-            .hero-description {
-                margin-left: auto;
-                margin-right: auto;
-            }
 
-            .buttons {
-                justify-content: center;
-            }
+/* LOGO */
 
-            .profile-card {
-                max-width: 420px;
-                margin: auto;
-            }
+.logo{
 
-            .stats {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
+    display:flex;
 
-            .focus-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    align-items:center;
 
+    text-decoration:none;
 
-        @media (max-width: 650px) {
+}
 
-            .navbar {
-                padding: 15px;
-            }
 
-            nav {
-                gap: 14px;
-            }
+.logo img{
 
-            nav a {
-                font-size: 12px;
-            }
+    width:45px;
 
-            section {
-                padding: 70px 0;
-            }
+    height:45px;
 
-            .hero h1 {
-                font-size: 48px;
-                letter-spacing: -2px;
-            }
+    object-fit:cover;
 
-            .hero-subtitle {
-                font-size: 19px;
-            }
+    border-radius:50%;
 
-            .stats {
-                grid-template-columns: 1fr 1fr;
-            }
+    border:2px solid var(--purple);
 
-            .profile-img {
-                width: 140px;
-                height: 140px;
-            }
-        }
+    box-shadow:
+        0 0 18px rgba(139,92,246,.5);
 
+    transition:.35s;
 
-        @media (max-width: 450px) {
+}
 
-            nav {
-                gap: 9px;
-            }
 
-            nav a {
-                font-size: 11px;
-            }
+.logo img:hover{
 
-            .logo {
-                width: 40px;
-                height: 40px;
-            }
+    transform:
+        scale(1.08)
+        rotate(8deg);
 
-            .hero h1 {
-                font-size: 40px;
-            }
+    box-shadow:
+        0 0 30px rgba(139,92,246,.8);
 
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
+}
 
-    </style>
+
+/* NAV */
+
+nav{
+
+    display:flex;
+
+    gap:30px;
+
+}
+
+
+nav a{
+
+    position:relative;
+
+    color:#c7c7d1;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-7px;
+
+    width:0;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--cyan)
+        );
+
+    transition:.3s;
+
+}
+
+
+nav a:hover{
+
+    color:white;
+
+}
+
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:
+        150px
+        7%
+        80px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.3fr
+        .7fr;
+
+    align-items:center;
+
+    gap:60px;
+
+}
+
+
+/* BADGE */
+
+.badge{
+
+    display:inline-block;
+
+    padding:9px 15px;
+
+    border-radius:30px;
+
+    background:
+        rgba(139,92,246,.08);
+
+    border:
+        1px solid rgba(139,92,246,.35);
+
+    color:#c8b5ff;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    margin-bottom:22px;
+
+    animation:
+        badgePulse 2.2s infinite;
+
+}
+
+
+@keyframes badgePulse{
+
+    0%,100%{
+        box-shadow:0 0 0 rgba(139,92,246,0);
+    }
+
+    50%{
+        box-shadow:
+            0 0 25px
+            rgba(139,92,246,.2);
+    }
+
+}
+
+
+/* HERO TITLE */
+
+.hero h1{
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            76px
+        );
+
+    line-height:1.05;
+
+    letter-spacing:-3px;
+
+}
+
+
+.gradient{
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            var(--purple),
+            var(--cyan)
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+
+.hero h2{
+
+    margin-top:18px;
+
+    color:#c5c5cf;
+
+    font-size:22px;
+
+    font-weight:500;
+
+}
+
+
+.hero p{
+
+    margin-top:22px;
+
+    max-width:650px;
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.buttons{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-top:32px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.btn{
+
+    display:inline-block;
+
+    padding:13px 21px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+
+.btn-primary{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--purple2)
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(139,92,246,.25);
+
+}
+
+
+.btn-primary:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(139,92,246,.5);
+
+}
+
+
+.btn-outline{
+
+    color:#ddd;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.03);
+
+}
+
+
+.btn-outline:hover{
+
+    transform:translateY(-4px);
+
+    color:var(--cyan);
+
+    border-color:var(--cyan);
+
+}
+
+
+/* =====================================================
+   PROFILE CARD
+===================================================== */
+
+.profile-card{
+
+    padding:35px;
+
+    text-align:center;
+
+    background:var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:25px;
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.35);
+
+    animation:
+        floatingCard 4s ease-in-out infinite;
+
+}
+
+
+@keyframes floatingCard{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+}
+
+
+.profile-card img{
+
+    width:190px;
+
+    height:190px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:
+        3px solid var(--purple);
+
+    box-shadow:
+        0 0 0 8px
+        rgba(139,92,246,.08),
+
+        0 0 45px
+        rgba(139,92,246,.45);
+
+}
+
+
+.profile-card h3{
+
+    margin-top:22px;
+
+    font-size:21px;
+
+}
+
+
+.profile-card p{
+
+    margin-top:8px;
+
+    color:var(--cyan);
+
+    font-size:13px;
+
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats{
+
+    max-width:1100px;
+
+    margin:
+        0 auto
+        80px;
+
+    padding:
+        0 7%;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+
+}
+
+
+.stat{
+
+    padding:24px;
+
+    text-align:center;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:17px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:.3s;
+
+}
+
+
+.stat:hover{
+
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(139,92,246,.5);
+
+}
+
+
+.stat h3{
+
+    font-size:28px;
+
+}
+
+
+.stat p{
+
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   FOCUS SECTION
+===================================================== */
+
+.section{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:
+        70px 7%;
+
+}
+
+
+.section-title{
+
+    margin-bottom:40px;
+
+}
+
+
+.section-title span{
+
+    color:var(--cyan);
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+}
+
+
+.section-title h2{
+
+    margin-top:10px;
+
+    font-size:35px;
+
+}
+
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+
+.card{
+
+    padding:28px;
+
+    background:var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:20px;
+
+    transition:.35s;
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(34,211,238,.4);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.3);
+
+}
+
+
+.icon{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:
+        rgba(139,92,246,.12);
+
+    font-size:22px;
+
+}
+
+
+.card h3{
+
+    margin-top:20px;
+
+}
+
+
+.card p{
+
+    margin-top:10px;
+
+    color:var(--muted);
+
+    line-height:1.7;
+
+    font-size:14px;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    border-top:
+        1px solid var(--border);
+
+    padding:
+        35px 7%;
+
+    text-align:center;
+
+    color:#777785;
+
+    font-size:13px;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:800px){
+
+    header{
+        padding:15px 5%;
+    }
+
+    nav{
+        gap:15px;
+    }
+
+    nav a{
+        font-size:12px;
+    }
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+        padding:
+            130px 6%
+            60px;
+
+        text-align:center;
+
+    }
+
+    .hero p{
+
+        margin-left:auto;
+
+        margin-right:auto;
+
+    }
+
+    .buttons{
+
+        justify-content:center;
+
+    }
+
+    .profile-card{
+
+        max-width:380px;
+
+        margin:auto;
+
+    }
+
+    .stats{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        padding:0 6%;
+
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .section{
+
+        padding:
+            60px 6%;
+
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    nav{
+        gap:9px;
+    }
+
+    nav a{
+        font-size:10px;
+    }
+
+    .logo img{
+
+        width:38px;
+
+        height:38px;
+
+    }
+
+    .hero h1{
+
+        letter-spacing:-2px;
+
+    }
+
+    .profile-card img{
+
+        width:150px;
+
+        height:150px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<!-- =====================================================
+     MAIN ENTRY LOADER
+===================================================== -->
 
-    <header>
+<div id="loader">
 
-        <div class="navbar">
+    <div class="loader-content">
 
-            <a href="index.html" class="logo">
-                HM
+        <div class="loader-photo">
+
+            <img
+                src="https://avatars.githubusercontent.com/u/190022282?v=4"
+                alt="Harsh Mahendra Mishra"
+            >
+
+        </div>
+
+        <div class="loader-ring"></div>
+
+        <h2>
+            HARSH MAHENDRA MISHRA
+        </h2>
+
+        <p>
+            LOADING EXPERIENCE
+        </p>
+
+        <div class="loader-bar">
+
+            <div class="loader-progress"></div>
+
+        </div>
+
+        <span class="loader-percent">
+            0%
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header>
+
+<div class="navbar">
+
+    <a
+        class="logo"
+        href="index.html"
+    >
+
+        <img
+            src="https://avatars.githubusercontent.com/u/190022282?v=4"
+            alt="Harsh Mahendra Mishra"
+        >
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="projects.html">
+            Projects
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main>
+
+<section class="hero">
+
+
+    <div>
+
+        <span class="badge">
+            AVAILABLE FOR INTERNSHIPS & COLLABORATIONS
+        </span>
+
+
+        <h1>
+
+            Hi, I'm<br>
+
+            <span class="gradient">
+                Harsh Mishra.
+            </span>
+
+        </h1>
+
+
+        <h2>
+            Software Developer & Cybersecurity Enthusiast
+        </h2>
+
+
+        <p>
+
+            Diploma Computer Technology student passionate
+            about building modern web applications, exploring
+            cybersecurity, and experimenting with AI & GenAI
+            technologies.
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                href="projects.html"
+                class="btn btn-primary"
+            >
+                View My Projects →
             </a>
 
-            <nav>
 
-                <a href="index.html" class="active">
-                    Home
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="projects.html">
-                    Projects
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </nav>
+            <a
+                href="contact.html"
+                class="btn btn-outline"
+            >
+                Contact Me
+            </a>
 
         </div>
 
-    </header>
+    </div>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- PROFILE -->
 
-    <main>
+    <div class="profile-card">
 
-        <section class="hero">
+        <img
+            src="https://avatars.githubusercontent.com/u/190022282?v=4"
+            alt="Harsh Mahendra Mishra"
+        >
 
-            <div class="container">
+        <h3>
+            Harsh Mahendra Mishra
+        </h3>
 
-                <div class="hero-grid">
+        <p>
+            Java • Web Development • Cybersecurity • AI
+        </p>
 
+    </div>
 
-                    <!-- LEFT -->
 
-                    <div>
+</section>
 
-                        <div class="availability">
 
-                            <span class="dot"></span>
+<!-- =====================================================
+     STATS
+===================================================== -->
 
-                            Open to Opportunities
+<section class="stats">
 
-                        </div>
 
+    <div class="stat">
 
-                        <h1>
+        <h3>
+            10+
+        </h3>
 
-                            Harsh
-                            <span class="gradient-text">
-                                Mahendra
-                            </span>
-                            Mishra.
+        <p>
+            Projects
+        </p>
 
-                        </h1>
+    </div>
 
 
-                        <p class="hero-subtitle">
+    <div class="stat">
 
-                            Aspiring Software Engineer
-                            · Cybersecurity Enthusiast
+        <h3>
+            3+
+        </h3>
 
-                        </p>
+        <p>
+            Internships
+        </p>
 
+    </div>
 
-                        <p class="hero-description">
 
-                            Diploma Computer Technology student at
-                            Government Polytechnic Pen, passionate about
-                            Software Development, Cybersecurity,
-                            AI & GenAI, and modern Web Development.
+    <div class="stat">
 
-                        </p>
+        <h3>
+            500+
+        </h3>
 
+        <p>
+            LinkedIn Connections
+        </p>
 
-                        <div class="buttons">
+    </div>
 
-                            <a
-                                href="projects.html"
-                                class="btn btn-primary"
-                            >
-                                View My Projects →
-                            </a>
 
+    <div class="stat">
 
-                            <a
-                                href="about.html"
-                                class="btn btn-secondary"
-                            >
-                                About Me
-                            </a>
+        <h3>
+            #6
+        </h3>
 
-                        </div>
+        <p>
+            Promptathon Rank
+        </p>
 
-                    </div>
+    </div>
 
 
-                    <!-- RIGHT -->
+</section>
 
-                    <div class="profile-card">
 
-                        <img
-                            src="https://avatars.githubusercontent.com/u/190022282?v=4"
-                            alt="Harsh Mahendra Mishra"
-                            class="profile-img"
-                        >
+<!-- =====================================================
+     FOCUS
+===================================================== -->
 
+<section class="section">
 
-                        <h3>
-                            Harsh Mahendra Mishra
-                        </h3>
 
+    <div class="section-title">
 
-                        <p>
-                            Software Development
-                            · Cybersecurity
-                            · AI & GenAI
-                        </p>
+        <span>
+            WHAT I DO
+        </span>
 
+        <h2>
+            My Areas of Focus
+        </h2>
 
-                        <p style="margin-top:10px;">
-                            📍 Pachora, Maharashtra, India
-                        </p>
+    </div>
 
-                    </div>
 
-                </div>
+    <div class="cards">
 
 
-                <!-- STATS -->
+        <div class="card">
 
-                <div class="stats">
-
-                    <div class="stat">
-
-                        <h3>3+</h3>
-
-                        <p>
-                            Internships
-                        </p>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <h3>8+</h3>
-
-                        <p>
-                            Projects
-                        </p>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <h3>6</h3>
-
-                        <p>
-                            Promptathon Rank
-                        </p>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <h3>500+</h3>
-
-                        <p>
-                            LinkedIn Connections
-                        </p>
-
-                    </div>
-
-                </div>
-
+            <div class="icon">
+                💻
             </div>
 
-        </section>
+            <h3>
+                Software Development
+            </h3>
 
+            <p>
 
-        <!-- =========================
-             FOCUS
-        ========================== -->
+                Building applications using Java,
+                Jakarta EE, JSP, Servlets, JDBC,
+                Python and modern web technologies.
 
-        <section>
-
-            <div class="container">
-
-                <span class="tag">
-                    WHAT I DO
-                </span>
-
-
-                <h2 class="section-title">
-
-                    Building with
-                    <span>technology.</span>
-
-                </h2>
-
-
-                <p class="section-text">
-
-                    I enjoy creating practical software projects,
-                    exploring cybersecurity, and learning how AI
-                    can be integrated into modern applications.
-
-                </p>
-
-
-                <div class="focus-grid">
-
-
-                    <div class="focus-card">
-
-                        <div class="icon">
-                            &lt;/&gt;
-                        </div>
-
-                        <h3>
-                            Software Development
-                        </h3>
-
-                        <p>
-
-                            Java, Jakarta EE, JSP, Servlets,
-                            JDBC, HTML, CSS, JavaScript and
-                            MySQL based application development.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="focus-card">
-
-                        <div class="icon">
-                            🔐
-                        </div>
-
-                        <h3>
-                            Cybersecurity
-                        </h3>
-
-                        <p>
-
-                            Exploring Linux, Nmap, networking,
-                            secure coding and cybersecurity
-                            concepts through practical projects.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="focus-card">
-
-                        <div class="icon">
-                            ✦
-                        </div>
-
-                        <h3>
-                            AI & GenAI
-                        </h3>
-
-                        <p>
-
-                            Learning AI, Generative AI,
-                            prompt engineering and building
-                            AI-powered productivity solutions.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="container">
-
-            © 2026 Harsh Mahendra Mishra.
-            Built with HTML & CSS.
+            </p>
 
         </div>
 
-    </footer>
+
+        <div class="card">
+
+            <div class="icon">
+                🛡️
+            </div>
+
+            <h3>
+                Cybersecurity
+            </h3>
+
+            <p>
+
+                Exploring Linux, networking, Nmap,
+                secure coding and practical
+                cybersecurity concepts.
+
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                🤖
+            </div>
+
+            <h3>
+                AI & GenAI
+            </h3>
+
+            <p>
+
+                Learning generative AI,
+                prompt engineering, AI-powered
+                applications and data analysis.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    © 2026 Harsh Mahendra Mishra.
+    Built with HTML & CSS.
+
+</footer>
+
+
+<!-- =====================================================
+     ONLY FOR LOADER PERCENTAGE
+     Page hiding does NOT depend on this JS.
+===================================================== -->
+
+<script>
+
+(function(){
+
+    const percentText =
+        document.querySelector(".loader-percent");
+
+    let percent = 0;
+
+    const counter =
+        setInterval(function(){
+
+            percent += 5;
+
+            if(percent >= 100){
+
+                percent = 100;
+
+                clearInterval(counter);
+
+            }
+
+            if(percentText){
+
+                percentText.textContent =
+                    percent + "%";
+
+            }
+
+        },100);
+
+})();
+
+</script>
 
 
 </body>
+
 </html>
