@@ -1,23 +1,1136 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css"><title>Contact | Harsh Mahendra Mishra</title></head><body>
-<div class="loader" id="loader"><div class="loader-inner"><div class="loader-ring"></div><div class="loader-text">HM<span>.</span></div><small>LOADING EXPERIENCE</small></div></div><header class="site-header">
-<nav class="nav container">
-<a class="brand page-link" href="index.html"><span>H</span>M<span class="dot">.</span></a>
-<button class="menu-btn" aria-label="Open menu"><i></i><i></i><i></i></button>
-<div class="nav-links">
-<a class="page-link" href="index.html">Home</a>
-<a class="page-link" href="about.html">About</a>
-<a class="page-link" href="projects.html">Projects</a>
-<a class="page-link" href="contact.html">Contact</a>
-</div>
-</nav></header><main><section class="contact-wrap container"><div class="contact-content"><span>LET'S CONNECT</span><h1>Have an opportunity?<br><em>Let's talk.</em></h1><p>I'm open to internships, collaborative projects, hackathons, learning opportunities and meaningful technology work.</p>
-<div class="contact-list">
-<a href="mailto:harshm.11082007@gmail.com"><small>EMAIL</small><b>harshm.11082007@gmail.com</b><i>↗</i></a>
-<a href="https://www.linkedin.com/in/harsh-mishra2k7/" target="_blank"><small>LINKEDIN</small><b>linkedin.com/in/harsh-mishra2k7</b><i>↗</i></a>
-<a href="https://github.com/Harsh2k7" target="_blank"><small>GITHUB</small><b>github.com/Harsh2k7</b><i>↗</i></a>
-<a href="tel:+919370105656"><small>PHONE</small><b>+91 9370105656</b><i>↗</i></a>
-</div><div class="contact-location">📍 Pachora, Jalgaon, Maharashtra, India</div></div></section></main><footer><div class="container footer-inner"><span>© 2026 Harsh Mahendra Mishra</span><span>Built with HTML · CSS · JavaScript</span><a href="https://github.com/Harsh2k7" target="_blank">GitHub ↗</a></div></footer><script src="assets/js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | Harsh Mahendra Mishra</title>
+
+    <meta name="description"
+          content="Contact Harsh Mahendra Mishra - Software Developer, Cybersecurity Enthusiast and AI learner.">
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #08080d;
+
+            color: #ffffff;
+
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           VARIABLES
+        ========================= */
+
+        :root {
+
+            --bg: #08080d;
+
+            --card: #101018;
+
+            --purple: #8b5cf6;
+
+            --purple-light: #a78bfa;
+
+            --cyan: #22d3ee;
+
+            --white: #ffffff;
+
+            --muted: #a1a1aa;
+
+            --border:
+                rgba(255,255,255,0.09);
+
+            --max-width: 1180px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            width: 100%;
+
+            background:
+                rgba(8,8,13,0.94);
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .navbar {
+
+            width: 90%;
+
+            max-width:
+                var(--max-width);
+
+            margin: auto;
+
+            padding: 18px 0;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+        }
+
+        .logo {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--purple),
+                    var(--cyan)
+                );
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 0 25px
+                rgba(139,92,246,0.25);
+        }
+
+        nav {
+
+            display: flex;
+
+            gap: 30px;
+        }
+
+        nav a {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+
+            color: #ffffff;
+        }
+
+
+        /* =========================
+           COMMON
+        ========================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width:
+                var(--max-width);
+
+            margin: auto;
+        }
+
+        section {
+
+            padding: 90px 0;
+        }
+
+        .tag {
+
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(139,92,246,0.08);
+
+            border:
+                1px solid
+                rgba(139,92,246,0.3);
+
+            color:
+                var(--purple-light);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =========================
+           PAGE HERO
+        ========================= */
+
+        .page-hero {
+
+            padding:
+                110px 0
+                60px;
+
+            text-align: center;
+        }
+
+        .page-hero h1 {
+
+            font-size:
+                clamp(45px, 7vw, 70px);
+
+            line-height: 1.1;
+
+            margin: 20px 0;
+        }
+
+        .gradient {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #a78bfa,
+                    #22d3ee
+                );
+
+            -webkit-background-clip:
+                text;
+
+            background-clip:
+                text;
+
+            color: transparent;
+        }
+
+        .page-description {
+
+            max-width: 680px;
+
+            margin: auto;
+
+            color: var(--muted);
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           CONTACT AREA
+        ========================= */
+
+        .contact-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                0.8fr 1.2fr;
+
+            gap: 35px;
+
+            align-items:
+                stretch;
+        }
+
+
+        /* =========================
+           LEFT CARD
+        ========================= */
+
+        .contact-intro {
+
+            padding: 35px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(139,92,246,0.12),
+                    rgba(34,211,238,0.03)
+                );
+        }
+
+        .contact-intro h2 {
+
+            font-size: 32px;
+
+            margin:
+                20px 0 15px;
+        }
+
+        .contact-intro h2 span {
+
+            color:
+                var(--purple-light);
+        }
+
+        .contact-intro p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           AVAILABILITY
+        ========================= */
+
+        .availability {
+
+            display: inline-flex;
+
+            align-items:
+                center;
+
+            gap: 9px;
+
+            padding:
+                8px 13px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(34,211,238,0.08);
+
+            border:
+                1px solid
+                rgba(34,211,238,0.2);
+
+            color:
+                #67e8f9;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .dot {
+
+            width: 8px;
+
+            height: 8px;
+
+            border-radius: 50%;
+
+            background:
+                #22c55e;
+
+            box-shadow:
+                0 0 10px
+                #22c55e;
+        }
+
+
+        /* =========================
+           CONTACT CARDS
+        ========================= */
+
+        .contact-links {
+
+            display: grid;
+
+            gap: 15px;
+        }
+
+        .contact-card {
+
+            display: flex;
+
+            align-items:
+                center;
+
+            gap: 18px;
+
+            padding: 20px;
+
+            background:
+                var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 16px;
+
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(139,92,246,0.4);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.25);
+        }
+
+
+        /* =========================
+           ICON
+        ========================= */
+
+        .contact-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius: 13px;
+
+            background:
+                rgba(139,92,246,0.1);
+
+            border:
+                1px solid
+                rgba(139,92,246,0.2);
+
+            color:
+                var(--purple-light);
+
+            font-size: 21px;
+        }
+
+
+        /* =========================
+           CONTACT TEXT
+        ========================= */
+
+        .contact-info {
+
+            min-width: 0;
+        }
+
+        .contact-info small {
+
+            display: block;
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+            margin-bottom: 3px;
+        }
+
+        .contact-info strong {
+
+            display: block;
+
+            font-size: 14px;
+
+            overflow-wrap:
+                anywhere;
+        }
+
+        .contact-arrow {
+
+            margin-left: auto;
+
+            color:
+                var(--muted);
+
+            font-size: 18px;
+
+            transition: 0.3s;
+        }
+
+        .contact-card:hover
+        .contact-arrow {
+
+            color:
+                var(--purple-light);
+
+            transform:
+                translateX(4px);
+        }
+
+
+        /* =========================
+           SOCIAL SECTION
+        ========================= */
+
+        .social-section {
+
+            margin-top: 70px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(139,92,246,0.08),
+                    rgba(34,211,238,0.03)
+                );
+        }
+
+        .social-section h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .social-section p {
+
+            color:
+                var(--muted);
+
+            max-width: 600px;
+
+            margin:
+                0 auto 25px;
+
+            font-size: 14px;
+        }
+
+        .social-buttons {
+
+            display: flex;
+
+            justify-content:
+                center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+
+            padding:
+                11px 18px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            border:
+                1px solid var(--border);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+
+            background:
+                var(--purple);
+
+            border-color:
+                var(--purple);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =========================
+           LOCATION CARD
+        ========================= */
+
+        .location {
+
+            margin-top: 20px;
+
+            padding: 20px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,0.03);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+        }
+
+        .location strong {
+
+            display: block;
+
+            color: white;
+
+            margin-bottom: 3px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            padding: 35px 0;
+
+            text-align: center;
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+
+            border-top:
+                1px solid var(--border);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .contact-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .contact-intro {
+
+                max-width: 700px;
+
+                margin: auto;
+
+                width: 100%;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+
+                padding:
+                    15px 0;
+            }
+
+            nav {
+
+                gap: 13px;
+            }
+
+            nav a {
+
+                font-size: 11px;
+            }
+
+            section {
+
+                padding: 70px 0;
+            }
+
+            .page-hero {
+
+                padding:
+                    80px 0
+                    50px;
+            }
+
+            .page-hero h1 {
+
+                font-size: 45px;
+            }
+
+            .contact-intro {
+
+                padding: 27px;
+            }
+
+            .social-section {
+
+                padding: 30px 20px;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .logo {
+
+                width: 40px;
+
+                height: 40px;
+            }
+
+            nav {
+
+                gap: 8px;
+            }
+
+            nav a {
+
+                font-size: 10px;
+            }
+
+            .contact-card {
+
+                padding: 16px;
+
+                gap: 12px;
+            }
+
+            .contact-icon {
+
+                width: 43px;
+
+                height: 43px;
+
+                font-size: 17px;
+            }
+
+            .contact-info strong {
+
+                font-size: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="navbar">
+
+            <a href="index.html" class="logo">
+                HM
+            </a>
+
+            <nav>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="projects.html">
+                    Projects
+                </a>
+
+                <a href="contact.html" class="active">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         PAGE HERO
+    ========================== -->
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <span class="tag">
+                CONTACT
+            </span>
+
+            <h1>
+
+                Let's connect
+                <span class="gradient">
+                    together.
+                </span>
+
+            </h1>
+
+            <p class="page-description">
+
+                Interested in collaboration, internships,
+                projects, hackathons or simply discussing
+                technology? Feel free to connect with me.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+
+                <!-- =========================
+                     INTRO
+                ========================== -->
+
+                <div class="contact-intro">
+
+                    <div class="availability">
+
+                        <span class="dot"></span>
+
+                        Open to Opportunities
+
+                    </div>
+
+
+                    <h2>
+
+                        Have an idea?
+                        <span>
+                            Let's talk.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        I am open to internship opportunities,
+                        collaborative projects, hackathons,
+                        student communities and technology
+                        related discussions.
+
+                    </p>
+
+
+                    <div class="location">
+
+                        <strong>
+                            📍 Location
+                        </strong>
+
+                        Pachora, Jalgaon,
+                        Maharashtra, India
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     CONTACT LINKS
+                ========================== -->
+
+                <div class="contact-links">
+
+
+                    <!-- EMAIL -->
+
+                    <a
+                        href="mailto:harshm.11082007@gmail.com"
+                        class="contact-card"
+                    >
+
+                        <div class="contact-icon">
+                            ✉
+                        </div>
+
+                        <div class="contact-info">
+
+                            <small>
+                                Email
+                            </small>
+
+                            <strong>
+                                harshm.11082007@gmail.com
+                            </strong>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- LINKEDIN -->
+
+                    <a
+                        href="https://www.linkedin.com/in/harsh-mishra2k7/"
+                        target="_blank"
+                        class="contact-card"
+                    >
+
+                        <div class="contact-icon">
+                            in
+                        </div>
+
+                        <div class="contact-info">
+
+                            <small>
+                                LinkedIn
+                            </small>
+
+                            <strong>
+                                linkedin.com/in/harsh-mishra2k7
+                            </strong>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            ↗
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- GITHUB -->
+
+                    <a
+                        href="https://github.com/Harsh2k7"
+                        target="_blank"
+                        class="contact-card"
+                    >
+
+                        <div class="contact-icon">
+                            ◉
+                        </div>
+
+                        <div class="contact-info">
+
+                            <small>
+                                GitHub
+                            </small>
+
+                            <strong>
+                                github.com/Harsh2k7
+                            </strong>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            ↗
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- PHONE -->
+
+                    <a
+                        href="tel:+919370105656"
+                        class="contact-card"
+                    >
+
+                        <div class="contact-icon">
+                            ☎
+                        </div>
+
+                        <div class="contact-info">
+
+                            <small>
+                                Phone
+                            </small>
+
+                            <strong>
+                                +91 9370105656
+                            </strong>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 SOCIALS
+            ========================== -->
+
+            <div class="social-section">
+
+                <h2>
+                    Find me online
+                </h2>
+
+                <p>
+
+                    Follow my work, projects and learning
+                    journey across my developer profiles.
+
+                </p>
+
+
+                <div class="social-buttons">
+
+
+                    <a
+                        href="https://github.com/Harsh2k7"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        GitHub ↗
+                    </a>
+
+
+                    <a
+                        href="https://www.linkedin.com/in/harsh-mishra2k7/"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        LinkedIn ↗
+                    </a>
+
+
+                    <a
+                        href="https://g.dev/2k7harsh-mishra"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        Google Developer Profile ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Harsh Mahendra Mishra.
+            Built with HTML & CSS.
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
