@@ -1,1136 +1,897 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>Contact | Harsh Mahendra Mishra</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<style>
 
-    <title>Contact | Harsh Mahendra Mishra</title>
+/* =========================
+   GLOBAL
+========================= */
 
-    <meta name="description"
-          content="Contact Harsh Mahendra Mishra - Software Developer, Cybersecurity Enthusiast and AI learner.">
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
+html{
+    scroll-behavior:smooth;
+}
 
-    <style>
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#08080d;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-        /* =========================
-           RESET
-        ========================= */
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* =========================
+   CONTACT LOADER
+========================= */
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
+#contactLoader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
 
-            background: #08080d;
+    background:
+        radial-gradient(circle at center,#151126 0%,#08080d 55%,#050509 100%);
 
-            color: #ffffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-            line-height: 1.6;
-        }
+    animation:contactLoaderHide .8s ease 2.2s forwards;
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+@keyframes contactLoaderHide{
 
+    to{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        z-index:-1;
+    }
 
-        /* =========================
-           VARIABLES
-        ========================= */
+}
 
-        :root {
 
-            --bg: #08080d;
+/* ORBIT */
 
-            --card: #101018;
+.orbit-system{
+    width:180px;
+    height:180px;
+    position:relative;
+    margin:auto;
+}
 
-            --purple: #8b5cf6;
 
-            --purple-light: #a78bfa;
+/* CENTER */
 
-            --cyan: #22d3ee;
+.orbit-center{
+    position:absolute;
 
-            --white: #ffffff;
+    width:70px;
+    height:70px;
 
-            --muted: #a1a1aa;
+    left:50%;
+    top:50%;
 
-            --border:
-                rgba(255,255,255,0.09);
+    transform:translate(-50%,-50%);
 
-            --max-width: 1180px;
-        }
+    border-radius:50%;
 
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #22d3ee
+        );
 
-        /* =========================
-           HEADER
-        ========================= */
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-        header {
+    font-size:22px;
+    font-weight:bold;
 
-            position: sticky;
+    box-shadow:
+        0 0 30px rgba(139,92,246,.7),
+        0 0 60px rgba(34,211,238,.25);
 
-            top: 0;
+    animation:centerPulse 1.5s infinite;
+}
 
-            z-index: 1000;
+@keyframes centerPulse{
 
-            width: 100%;
+    0%,100%{
+        transform:translate(-50%,-50%) scale(1);
+    }
 
-            background:
-                rgba(8,8,13,0.94);
+    50%{
+        transform:translate(-50%,-50%) scale(1.08);
+    }
 
-            border-bottom:
-                1px solid var(--border);
-        }
+}
 
-        .navbar {
 
-            width: 90%;
+/* ORBIT RINGS */
 
-            max-width:
-                var(--max-width);
+.orbit{
+    position:absolute;
 
-            margin: auto;
+    border-radius:50%;
 
-            padding: 18px 0;
+    border:1px solid rgba(139,92,246,.45);
 
-            display: flex;
+    left:50%;
+    top:50%;
 
-            justify-content:
-                space-between;
+    transform:translate(-50%,-50%);
+}
 
-            align-items:
-                center;
-        }
+.orbit.one{
+    width:120px;
+    height:120px;
 
-        .logo {
+    animation:orbitRotate 3s linear infinite;
+}
 
-            width: 45px;
+.orbit.two{
+    width:170px;
+    height:170px;
 
-            height: 45px;
+    border-color:rgba(34,211,238,.3);
 
-            display: flex;
+    animation:orbitRotateReverse 4s linear infinite;
+}
 
-            justify-content:
-                center;
+@keyframes orbitRotate{
 
-            align-items:
-                center;
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
 
-            border-radius: 12px;
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--purple),
-                    var(--cyan)
-                );
+}
 
-            font-size: 17px;
+@keyframes orbitRotateReverse{
 
-            font-weight: 800;
+    from{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
 
-            box-shadow:
-                0 0 25px
-                rgba(139,92,246,0.25);
-        }
+    to{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
 
-        nav {
+}
 
-            display: flex;
 
-            gap: 30px;
-        }
+/* ORBIT DOTS */
 
-        nav a {
+.orbit-dot{
+    position:absolute;
 
-            color: var(--muted);
+    width:8px;
+    height:8px;
 
-            font-size: 14px;
+    border-radius:50%;
 
-            font-weight: 600;
+    background:#22d3ee;
 
-            transition: 0.3s;
-        }
+    box-shadow:0 0 15px #22d3ee;
+}
 
-        nav a:hover,
-        nav a.active {
+.dot-one{
+    top:-4px;
+    left:50%;
+}
 
-            color: #ffffff;
-        }
+.dot-two{
+    bottom:15px;
+    right:-4px;
 
+    background:#8b5cf6;
 
-        /* =========================
-           COMMON
-        ========================= */
+    box-shadow:0 0 15px #8b5cf6;
+}
 
-        .container {
 
-            width: 90%;
+/* LOADER TEXT */
 
-            max-width:
-                var(--max-width);
+.contact-loader-box{
+    text-align:center;
+}
 
-            margin: auto;
-        }
+.contact-loader-box h2{
+    margin-top:35px;
 
-        section {
+    font-size:20px;
 
-            padding: 90px 0;
-        }
+    letter-spacing:4px;
+}
 
-        .tag {
+.contact-loader-box p{
 
-            display: inline-block;
+    margin-top:8px;
 
-            padding: 8px 14px;
+    color:#22d3ee;
 
-            border-radius: 50px;
+    font-size:11px;
 
-            background:
-                rgba(139,92,246,0.08);
+    letter-spacing:4px;
+}
 
-            border:
-                1px solid
-                rgba(139,92,246,0.3);
 
-            color:
-                var(--purple-light);
+/* =========================
+   NAVBAR
+========================= */
 
-            font-size: 12px;
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
 
-            font-weight: 700;
+    backdrop-filter:blur(15px);
 
-            letter-spacing: 0.5px;
-        }
+    background:rgba(8,8,13,.82);
 
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+}
 
-        /* =========================
-           PAGE HERO
-        ========================= */
+.navbar{
 
-        .page-hero {
+    max-width:1150px;
 
-            padding:
-                110px 0
-                60px;
+    margin:auto;
 
-            text-align: center;
-        }
+    padding:16px 25px;
 
-        .page-hero h1 {
+    display:flex;
 
-            font-size:
-                clamp(45px, 7vw, 70px);
+    justify-content:space-between;
 
-            line-height: 1.1;
+    align-items:center;
+}
 
-            margin: 20px 0;
-        }
+.logo img{
 
-        .gradient {
+    width:43px;
+    height:43px;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #a78bfa,
-                    #22d3ee
-                );
+    border-radius:50%;
 
-            -webkit-background-clip:
-                text;
+    object-fit:cover;
 
-            background-clip:
-                text;
+    border:2px solid #8b5cf6;
 
-            color: transparent;
-        }
+    box-shadow:
+        0 0 18px rgba(139,92,246,.45);
 
-        .page-description {
+    transition:.3s;
+}
 
-            max-width: 680px;
+.logo img:hover{
 
-            margin: auto;
+    transform:scale(1.08);
 
-            color: var(--muted);
+}
 
-            font-size: 16px;
-        }
+nav{
 
+    display:flex;
 
-        /* =========================
-           CONTACT AREA
-        ========================= */
+    gap:28px;
+}
 
-        .contact-grid {
+nav a{
 
-            display: grid;
+    color:#aaa;
 
-            grid-template-columns:
-                0.8fr 1.2fr;
+    font-size:14px;
 
-            gap: 35px;
+    transition:.3s;
+}
 
-            align-items:
-                stretch;
-        }
+nav a:hover,
+nav a.active{
 
+    color:#fff;
 
-        /* =========================
-           LEFT CARD
-        ========================= */
+}
 
-        .contact-intro {
 
-            padding: 35px;
+/* =========================
+   MAIN
+========================= */
 
-            border:
-                1px solid var(--border);
+.container{
 
-            border-radius: 22px;
+    max-width:1000px;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(139,92,246,0.12),
-                    rgba(34,211,238,0.03)
-                );
-        }
+    margin:auto;
 
-        .contact-intro h2 {
+    padding:100px 25px;
+}
 
-            font-size: 32px;
+.heading{
 
-            margin:
-                20px 0 15px;
-        }
+    text-align:center;
 
-        .contact-intro h2 span {
+    margin-bottom:65px;
 
-            color:
-                var(--purple-light);
-        }
+    animation:fadeUp .8s ease;
+}
 
-        .contact-intro p {
+.heading span{
 
-            color: var(--muted);
+    color:#22d3ee;
 
-            font-size: 14px;
+    font-size:12px;
 
-            margin-bottom: 25px;
-        }
+    letter-spacing:4px;
+}
 
+.heading h1{
 
-        /* =========================
-           AVAILABILITY
-        ========================= */
+    font-size:48px;
 
-        .availability {
+    margin-top:12px;
+}
 
-            display: inline-flex;
+.heading p{
 
-            align-items:
-                center;
+    color:#999;
 
-            gap: 9px;
+    margin-top:15px;
 
-            padding:
-                8px 13px;
+    line-height:1.7;
+}
 
-            border-radius: 50px;
+@keyframes fadeUp{
 
-            background:
-                rgba(34,211,238,0.08);
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
 
-            border:
-                1px solid
-                rgba(34,211,238,0.2);
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 
-            color:
-                #67e8f9;
+}
 
-            font-size: 12px;
 
-            font-weight: 700;
-        }
+/* =========================
+   CONTACT GRID
+========================= */
 
-        .dot {
+.contact-grid{
 
-            width: 8px;
+    display:grid;
 
-            height: 8px;
+    grid-template-columns:
+        repeat(2,1fr);
 
-            border-radius: 50%;
+    gap:22px;
+}
 
-            background:
-                #22c55e;
+.contact-card{
 
-            box-shadow:
-                0 0 10px
-                #22c55e;
-        }
+    position:relative;
 
+    padding:30px;
 
-        /* =========================
-           CONTACT CARDS
-        ========================= */
+    border-radius:20px;
 
-        .contact-links {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
 
-            display: grid;
+    border:
+        1px solid rgba(255,255,255,.08);
 
-            gap: 15px;
-        }
+    overflow:hidden;
 
-        .contact-card {
+    transition:.4s;
 
-            display: flex;
+    animation:cardAppear .8s ease both;
+}
 
-            align-items:
-                center;
+.contact-card:nth-child(2){
+    animation-delay:.1s;
+}
 
-            gap: 18px;
+.contact-card:nth-child(3){
+    animation-delay:.2s;
+}
 
-            padding: 20px;
+.contact-card:nth-child(4){
+    animation-delay:.3s;
+}
 
-            background:
-                var(--card);
+@keyframes cardAppear{
 
-            border:
-                1px solid var(--border);
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
 
-            border-radius: 16px;
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 
-            transition: 0.3s;
-        }
+}
 
-        .contact-card:hover {
+.contact-card:hover{
 
-            transform:
-                translateY(-4px);
+    transform:translateY(-8px);
 
-            border-color:
-                rgba(139,92,246,0.4);
+    border-color:
+        rgba(139,92,246,.5);
 
-            box-shadow:
-                0 15px 40px
-                rgba(0,0,0,0.25);
-        }
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35);
+}
 
+.contact-icon{
 
-        /* =========================
-           ICON
-        ========================= */
+    width:50px;
+    height:50px;
 
-        .contact-icon {
+    border-radius:14px;
 
-            width: 50px;
+    display:flex;
 
-            height: 50px;
+    justify-content:center;
 
-            flex-shrink: 0;
+    align-items:center;
 
-            display: flex;
+    background:
+        rgba(139,92,246,.12);
 
-            align-items:
-                center;
+    color:#22d3ee;
 
-            justify-content:
-                center;
+    font-size:20px;
 
-            border-radius: 13px;
+    margin-bottom:20px;
 
-            background:
-                rgba(139,92,246,0.1);
+}
 
-            border:
-                1px solid
-                rgba(139,92,246,0.2);
+.contact-card h2{
 
-            color:
-                var(--purple-light);
+    font-size:20px;
+}
 
-            font-size: 21px;
-        }
+.contact-card p{
 
+    margin-top:10px;
 
-        /* =========================
-           CONTACT TEXT
-        ========================= */
+    color:#999;
 
-        .contact-info {
+    font-size:14px;
 
-            min-width: 0;
-        }
+    line-height:1.6;
+}
 
-        .contact-info small {
+.contact-card a{
 
-            display: block;
+    display:inline-block;
 
-            color:
-                var(--muted);
+    margin-top:18px;
 
-            font-size: 11px;
+    color:#22d3ee;
 
-            margin-bottom: 3px;
-        }
+    font-size:13px;
 
-        .contact-info strong {
+    transition:.3s;
+}
 
-            display: block;
+.contact-card a:hover{
 
-            font-size: 14px;
+    letter-spacing:1px;
+}
 
-            overflow-wrap:
-                anywhere;
-        }
 
-        .contact-arrow {
+/* =========================
+   CTA
+========================= */
 
-            margin-left: auto;
+.cta{
 
-            color:
-                var(--muted);
+    margin-top:50px;
 
-            font-size: 18px;
+    text-align:center;
 
-            transition: 0.3s;
-        }
+    padding:45px 25px;
 
-        .contact-card:hover
-        .contact-arrow {
+    border-radius:25px;
 
-            color:
-                var(--purple-light);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,.13),
+            rgba(34,211,238,.06)
+        );
 
-            transform:
-                translateX(4px);
-        }
+    border:
+        1px solid rgba(139,92,246,.2);
 
+    animation:fadeUp 1s ease;
+}
 
-        /* =========================
-           SOCIAL SECTION
-        ========================= */
+.cta h2{
 
-        .social-section {
+    font-size:28px;
+}
 
-            margin-top: 70px;
+.cta p{
 
-            padding: 45px;
+    color:#999;
 
-            text-align: center;
+    margin-top:12px;
+}
 
-            border:
-                1px solid var(--border);
+.cta-button{
 
-            border-radius: 22px;
+    display:inline-block;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(139,92,246,0.08),
-                    rgba(34,211,238,0.03)
-                );
-        }
+    margin-top:25px;
 
-        .social-section h2 {
+    padding:13px 25px;
 
-            font-size: 30px;
+    border-radius:30px;
 
-            margin-bottom: 10px;
-        }
+    background:
+        linear-gradient(
+            90deg,
+            #8b5cf6,
+            #22d3ee
+        );
 
-        .social-section p {
+    color:#fff;
 
-            color:
-                var(--muted);
+    font-size:13px;
 
-            max-width: 600px;
+    transition:.3s;
 
-            margin:
-                0 auto 25px;
+    box-shadow:
+        0 10px 30px rgba(139,92,246,.2);
+}
 
-            font-size: 14px;
-        }
+.cta-button:hover{
 
-        .social-buttons {
+    transform:translateY(-4px);
 
-            display: flex;
+    box-shadow:
+        0 15px 35px rgba(139,92,246,.4);
+}
 
-            justify-content:
-                center;
 
-            gap: 12px;
+/* =========================
+   FOOTER
+========================= */
 
-            flex-wrap: wrap;
-        }
+footer{
 
-        .social-btn {
+    text-align:center;
 
-            padding:
-                11px 18px;
+    padding:35px 20px;
 
-            border-radius: 10px;
+    color:#777;
 
-            background:
-                rgba(255,255,255,0.04);
+    border-top:
+        1px solid rgba(255,255,255,.06);
 
-            border:
-                1px solid var(--border);
+    font-size:13px;
+}
 
-            font-size: 13px;
 
-            font-weight: 700;
+/* =========================
+   RESPONSIVE
+========================= */
 
-            transition: 0.3s;
-        }
+@media(max-width:750px){
 
-        .social-btn:hover {
+    .contact-grid{
 
-            background:
-                var(--purple);
+        grid-template-columns:1fr;
+    }
 
-            border-color:
-                var(--purple);
+    .heading h1{
 
-            transform:
-                translateY(-3px);
-        }
+        font-size:38px;
+    }
 
+}
 
-        /* =========================
-           LOCATION CARD
-        ========================= */
+@media(max-width:650px){
 
-        .location {
+    .navbar{
 
-            margin-top: 20px;
+        padding:14px 18px;
+    }
 
-            padding: 20px;
+    nav{
 
-            border-radius: 15px;
+        gap:14px;
+    }
 
-            background:
-                rgba(255,255,255,0.03);
+    nav a{
 
-            border:
-                1px solid
-                rgba(255,255,255,0.06);
+        font-size:12px;
+    }
 
-            color:
-                var(--muted);
+    .container{
 
-            font-size: 13px;
-        }
+        padding:70px 18px;
+    }
 
-        .location strong {
+}
 
-            display: block;
-
-            color: white;
-
-            margin-bottom: 3px;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-
-            padding: 35px 0;
-
-            text-align: center;
-
-            color:
-                var(--muted);
-
-            font-size: 13px;
-
-            border-top:
-                1px solid var(--border);
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .contact-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-            .contact-intro {
-
-                max-width: 700px;
-
-                margin: auto;
-
-                width: 100%;
-            }
-
-        }
-
-
-        @media (max-width: 650px) {
-
-            .navbar {
-
-                padding:
-                    15px 0;
-            }
-
-            nav {
-
-                gap: 13px;
-            }
-
-            nav a {
-
-                font-size: 11px;
-            }
-
-            section {
-
-                padding: 70px 0;
-            }
-
-            .page-hero {
-
-                padding:
-                    80px 0
-                    50px;
-            }
-
-            .page-hero h1 {
-
-                font-size: 45px;
-            }
-
-            .contact-intro {
-
-                padding: 27px;
-            }
-
-            .social-section {
-
-                padding: 30px 20px;
-            }
-
-        }
-
-
-        @media (max-width: 450px) {
-
-            .logo {
-
-                width: 40px;
-
-                height: 40px;
-            }
-
-            nav {
-
-                gap: 8px;
-            }
-
-            nav a {
-
-                font-size: 10px;
-            }
-
-            .contact-card {
-
-                padding: 16px;
-
-                gap: 12px;
-            }
-
-            .contact-icon {
-
-                width: 43px;
-
-                height: 43px;
-
-                font-size: 17px;
-            }
-
-            .contact-info strong {
-
-                font-size: 12px;
-            }
-
-        }
-
-    </style>
-
+</style>
 </head>
 
 
 <body>
 
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<!-- =========================
+     CONTACT LOADER
+========================= -->
 
-    <header>
+<div id="contactLoader">
 
-        <div class="navbar">
+<div class="contact-loader-box">
 
-            <a href="index.html" class="logo">
-                HM
-            </a>
+<div class="orbit-system">
 
-            <nav>
+<div class="orbit one">
 
-                <a href="index.html">
-                    Home
-                </a>
+<div class="orbit-dot dot-one"></div>
 
-                <a href="about.html">
-                    About
-                </a>
+</div>
 
-                <a href="projects.html">
-                    Projects
-                </a>
 
-                <a href="contact.html" class="active">
-                    Contact
-                </a>
+<div class="orbit two">
 
-            </nav>
+<div class="orbit-dot dot-two"></div>
 
-        </div>
+</div>
 
-    </header>
 
+<div class="orbit-center">
+HM
+</div>
 
+</div>
 
-    <!-- =========================
-         PAGE HERO
-    ========================== -->
 
-    <section class="page-hero">
+<h2>LET'S CONNECT</h2>
 
-        <div class="container">
+<p>ESTABLISHING CONNECTION</p>
 
-            <span class="tag">
-                CONTACT
-            </span>
+</div>
 
-            <h1>
+</div>
 
-                Let's connect
-                <span class="gradient">
-                    together.
-                </span>
 
-            </h1>
+<!-- =========================
+     NAVBAR
+========================= -->
 
-            <p class="page-description">
+<header>
 
-                Interested in collaboration, internships,
-                projects, hackathons or simply discussing
-                technology? Feel free to connect with me.
+<div class="navbar">
 
-            </p>
+<a href="index.html" class="logo">
 
-        </div>
+<img
+src="https://avatars.githubusercontent.com/u/190022282?v=4"
+alt="Harsh Mahendra Mishra">
 
-    </section>
+</a>
 
 
+<nav>
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
+<a href="index.html">Home</a>
 
-    <section>
+<a href="about.html">About</a>
 
-        <div class="container">
+<a href="projects.html">Projects</a>
 
-            <div class="contact-grid">
+<a href="contact.html" class="active">
+Contact
+</a>
 
+</nav>
 
-                <!-- =========================
-                     INTRO
-                ========================== -->
+</div>
 
-                <div class="contact-intro">
+</header>
 
-                    <div class="availability">
 
-                        <span class="dot"></span>
+<!-- =========================
+     CONTACT
+========================= -->
 
-                        Open to Opportunities
+<main class="container">
 
-                    </div>
 
+<div class="heading">
 
-                    <h2>
+<span>GET IN TOUCH</span>
 
-                        Have an idea?
-                        <span>
-                            Let's talk.
-                        </span>
+<h1>Let's Connect</h1>
 
-                    </h2>
+<p>
+Have a project idea, internship opportunity,
+hackathon collaboration or simply want to connect?
+Feel free to reach out.
+</p>
 
+</div>
 
-                    <p>
 
-                        I am open to internship opportunities,
-                        collaborative projects, hackathons,
-                        student communities and technology
-                        related discussions.
+<div class="contact-grid">
 
-                    </p>
 
+<!-- EMAIL -->
 
-                    <div class="location">
+<div class="contact-card">
 
-                        <strong>
-                            📍 Location
-                        </strong>
+<div class="contact-icon">
+✉
+</div>
 
-                        Pachora, Jalgaon,
-                        Maharashtra, India
+<h2>Email</h2>
 
-                    </div>
+<p>
+For professional opportunities, projects,
+collaborations and general communication.
+</p>
 
-                </div>
+<a href="mailto:harshm.11082007@gmail.com">
+harshm.11082007@gmail.com →
+</a>
 
+</div>
 
 
-                <!-- =========================
-                     CONTACT LINKS
-                ========================== -->
+<!-- LINKEDIN -->
 
-                <div class="contact-links">
+<div class="contact-card">
 
+<div class="contact-icon">
+in
+</div>
 
-                    <!-- EMAIL -->
+<h2>LinkedIn</h2>
 
-                    <a
-                        href="mailto:harshm.11082007@gmail.com"
-                        class="contact-card"
-                    >
+<p>
+Connect with me on LinkedIn for networking,
+internships and professional opportunities.
+</p>
 
-                        <div class="contact-icon">
-                            ✉
-                        </div>
+<a
+href="https://www.linkedin.com/in/harsh-mishra2k7/"
+target="_blank">
 
-                        <div class="contact-info">
+View LinkedIn Profile →
 
-                            <small>
-                                Email
-                            </small>
+</a>
 
-                            <strong>
-                                harshm.11082007@gmail.com
-                            </strong>
+</div>
 
-                        </div>
 
-                        <div class="contact-arrow">
-                            →
-                        </div>
+<!-- GITHUB -->
 
-                    </a>
+<div class="contact-card">
 
+<div class="contact-icon">
+⌘
+</div>
 
+<h2>GitHub</h2>
 
-                    <!-- LINKEDIN -->
+<p>
+Explore my projects, experiments, source code
+and development journey.
+</p>
 
-                    <a
-                        href="https://www.linkedin.com/in/harsh-mishra2k7/"
-                        target="_blank"
-                        class="contact-card"
-                    >
+<a
+href="https://github.com/Harsh2k7"
+target="_blank">
 
-                        <div class="contact-icon">
-                            in
-                        </div>
+Visit GitHub →
 
-                        <div class="contact-info">
+</a>
 
-                            <small>
-                                LinkedIn
-                            </small>
+</div>
 
-                            <strong>
-                                linkedin.com/in/harsh-mishra2k7
-                            </strong>
 
-                        </div>
+<!-- LOCATION -->
 
-                        <div class="contact-arrow">
-                            ↗
-                        </div>
+<div class="contact-card">
 
-                    </a>
+<div class="contact-icon">
+⌖
+</div>
 
+<h2>Location</h2>
 
+<p>
+Pachora, Maharashtra, India
+</p>
 
-                    <!-- GITHUB -->
+<a
+href="https://www.google.com/maps/search/?api=1&query=Pachora%2C%20Maharashtra"
+target="_blank">
 
-                    <a
-                        href="https://github.com/Harsh2k7"
-                        target="_blank"
-                        class="contact-card"
-                    >
+View Location →
 
-                        <div class="contact-icon">
-                            ◉
-                        </div>
+</a>
 
-                        <div class="contact-info">
+</div>
 
-                            <small>
-                                GitHub
-                            </small>
 
-                            <strong>
-                                github.com/Harsh2k7
-                            </strong>
+</div>
 
-                        </div>
 
-                        <div class="contact-arrow">
-                            ↗
-                        </div>
+<!-- =========================
+     CTA
+========================= -->
 
-                    </a>
+<div class="cta">
 
+<h2>Let's Build Something</h2>
 
+<p>
+Open to internships, collaborative projects,
+hackathons and learning opportunities.
+</p>
 
-                    <!-- PHONE -->
+<a
+class="cta-button"
+href="mailto:harshm.11082007@gmail.com">
 
-                    <a
-                        href="tel:+919370105656"
-                        class="contact-card"
-                    >
+Send Me an Email →
 
-                        <div class="contact-icon">
-                            ☎
-                        </div>
+</a>
 
-                        <div class="contact-info">
+</div>
 
-                            <small>
-                                Phone
-                            </small>
 
-                            <strong>
-                                +91 9370105656
-                            </strong>
+</main>
 
-                        </div>
 
-                        <div class="contact-arrow">
-                            →
-                        </div>
+<footer>
 
-                    </a>
+© 2026 Harsh Mahendra Mishra 
 
-                </div>
-
-            </div>
-
-
-
-            <!-- =========================
-                 SOCIALS
-            ========================== -->
-
-            <div class="social-section">
-
-                <h2>
-                    Find me online
-                </h2>
-
-                <p>
-
-                    Follow my work, projects and learning
-                    journey across my developer profiles.
-
-                </p>
-
-
-                <div class="social-buttons">
-
-
-                    <a
-                        href="https://github.com/Harsh2k7"
-                        target="_blank"
-                        class="social-btn"
-                    >
-                        GitHub ↗
-                    </a>
-
-
-                    <a
-                        href="https://www.linkedin.com/in/harsh-mishra2k7/"
-                        target="_blank"
-                        class="social-btn"
-                    >
-                        LinkedIn ↗
-                    </a>
-
-
-                    <a
-                        href="https://g.dev/2k7harsh-mishra"
-                        target="_blank"
-                        class="social-btn"
-                    >
-                        Google Developer Profile ↗
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="container">
-
-            © 2026 Harsh Mahendra Mishra.
-            Built with HTML & CSS.
-
-        </div>
-
-    </footer>
+</footer>
 
 
 </body>
-
 </html>
